@@ -7,7 +7,7 @@
 
 // https://adventofcode.com/2020/day/1
 
-enum Day_1: Solvable {
+enum Day_1_2020: Solvable {
     static func solve() {
         let numbers = Input.getIntArray(for: .Day_1, in: .Year_2020)
         print("Solution for Part 1: \(solvePart1(numbers: numbers))")
