@@ -52,6 +52,8 @@ enum Input {
             print("Could not read content this file here: \(url)")
             return []
         }
+
+        // .dropLast() for the last empty line in a file
         return stringContent.components(separatedBy: "\n").dropLast()
     }
 }
