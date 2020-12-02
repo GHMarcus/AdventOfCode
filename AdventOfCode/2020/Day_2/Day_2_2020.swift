@@ -28,8 +28,11 @@ enum Day_2_2020: Solvable {
     }
 
     static func solve() {
-        let lines = Input.getStringArray(for: .Day_2, in: .Year_2020)
-        print("********** Day 2 Year 2020 **********")
+        let day: Input.Day = .Day_2
+        let year: Input.Year = .Year_2020
+
+        let lines = Input.getStringArray(for: day, in: year)
+        print("********** \(day.rawValue) Year \(year.rawValue) **********")
         print("Solution for Part 1: \(solvePart1(lines: lines))")
         print("Solution for Part 2: \(solvePart2(lines: lines))")
         print("*************************************")
