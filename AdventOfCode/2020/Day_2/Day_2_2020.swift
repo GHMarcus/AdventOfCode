@@ -41,7 +41,7 @@ enum Day_2_2020: Solvable {
     private static func solvePart1(lines: [String]) -> String {
         var validPwd: [Bool] = []
         lines.forEach { line in
-            validPwd.append(splitStringInRuels(line: line).isValidOldPolicie)
+            validPwd.append(convertStringInPassword(line: line).isValidOldPolicie)
         }
         validPwd = validPwd.filter { $0 }
         return "\(validPwd.count)"
@@ -50,13 +50,15 @@ enum Day_2_2020: Solvable {
     private static func solvePart2(lines: [String]) -> String {
         var validPwd: [Bool] = []
         lines.forEach { line in
-            validPwd.append(splitStringInRuels(line: line).isValidNewPolicie)
+            validPwd.append(convertStringInPassword(line: line).isValidNewPolicie)
         }
         validPwd = validPwd.filter { $0 }
         return "\(validPwd.count)"
     }
 
-    private static func splitStringInRuels(line: String) -> Password {
+    private static func convertStringInPassword(line: String) -> Password {
+        /// lines looks like this: `1-7 t: rtctmtt`
+
         let componets = line.components(separatedBy: " ")
 
         guard componets.count == 3 else {
