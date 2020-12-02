@@ -12,6 +12,7 @@
 		168B96D425763DA80047E969 /* ReadInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B96D225763DA80047E969 /* ReadInput.swift */; };
 		168B96DA25763DD30047E969 /* Day_1_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B96D825763DD30047E969 /* Day_1_2020.swift */; };
 		168B96EA2576469E0047E969 /* Year2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B96E92576469E0047E969 /* Year2020.swift */; };
+		168B96F425764EDC0047E969 /* Day_2_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B96F325764EDC0047E969 /* Day_2_2020.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		168B96D825763DD30047E969 /* Day_1_2020.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_1_2020.swift; sourceTree = "<group>"; };
 		168B96D925763DD30047E969 /* Day_1_2020_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_1_2020_Input; sourceTree = "<group>"; };
 		168B96E92576469E0047E969 /* Year2020.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year2020.swift; sourceTree = "<group>"; };
+		168B96F325764EDC0047E969 /* Day_2_2020.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_2_2020.swift; sourceTree = "<group>"; };
+		168B96F725764EF10047E969 /* Day_2_2020_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_2_2020_Input; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 			children = (
 				168B96E92576469E0047E969 /* Year2020.swift */,
 				168B96D725763DB20047E969 /* Day_1 */,
+				168B96F225764EC80047E969 /* Day_2 */,
 			);
 			path = 2020;
 			sourceTree = "<group>";
@@ -90,6 +94,15 @@
 				168B96D825763DD30047E969 /* Day_1_2020.swift */,
 			);
 			path = Day_1;
+			sourceTree = "<group>";
+		};
+		168B96F225764EC80047E969 /* Day_2 */ = {
+			isa = PBXGroup;
+			children = (
+				168B96F725764EF10047E969 /* Day_2_2020_Input */,
+				168B96F325764EDC0047E969 /* Day_2_2020.swift */,
+			);
+			path = Day_2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				168B96DA25763DD30047E969 /* Day_1_2020.swift in Sources */,
+				168B96F425764EDC0047E969 /* Day_2_2020.swift in Sources */,
 				168B96C925763D3B0047E969 /* main.swift in Sources */,
 				168B96D425763DA80047E969 /* ReadInput.swift in Sources */,
 				168B96EA2576469E0047E969 /* Year2020.swift in Sources */,

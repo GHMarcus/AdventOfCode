@@ -25,7 +25,8 @@ enum Input {
             .appendingPathComponent("\(day.rawValue)_\(year.rawValue)_Input")
 
         guard let stringContent = try? String(contentsOf: url) else {
-            fatalError("Could not read content this file here: \(url)")
+            print("Could not read content this file here: \(url)")
+            return []
         }
 
         let components = stringContent.components(separatedBy: "\n")
@@ -33,9 +34,24 @@ enum Input {
 
         // Minus 1 for the last empty line in a file
         guard (components.count - 1) == intContent.count else {
-            fatalError("Converted Input is smaler then original input")
+            print("Converted Input is smaler then original input")
+            return []
         }
 
         return intContent
+    }
+
+    static func getStringArray(for day: Day, in year: Year) -> [String] {
+        let url = URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .appendingPathComponent(year.rawValue)
+            .appendingPathComponent(day.rawValue)
+            .appendingPathComponent("\(day.rawValue)_\(year.rawValue)_Input")
+
+        guard let stringContent = try? String(contentsOf: url) else {
+            print("Could not read content this file here: \(url)")
+            return []
+        }
+        return stringContent.components(separatedBy: "\n").dropLast()
     }
 }

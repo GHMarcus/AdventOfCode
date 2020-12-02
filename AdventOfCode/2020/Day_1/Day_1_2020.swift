@@ -10,8 +10,10 @@
 enum Day_1_2020: Solvable {
     static func solve() {
         let numbers = Input.getIntArray(for: .Day_1, in: .Year_2020)
+        print("********** Day 1 Year 2020 **********")
         print("Solution for Part 1: \(solvePart1(numbers: numbers))")
         print("Solution for Part 2: \(solvePart2(numbers: numbers))")
+        print("*************************************")
     }
 
     private static func solvePart1(numbers: [Int]) -> String {
