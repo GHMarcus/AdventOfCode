@@ -8,19 +8,11 @@
 // https://adventofcode.com/2020/day/3
 
 enum Day_3_2020: Solvable {
-    static func solve() {
-        let day: Input.Day = .Day_3
-        let year: Input.Year = .Year_2020
+    static var day: Input.Day = .Day_3
+    static var year: Input.Year = .Year_2020
 
-        let lines = Input.getStringArray(for: day, in: year)
-        print("********** \(day.rawValue) Year \(year.rawValue) **********")
-        print("Solution for Part 1: \(solvePart1(lines: lines))")
-        print("Solution for Part 2: \(solvePart2(lines: lines))")
-        print("*************************************")
-    }
-
-    private static func solvePart1(lines: [String]) -> String {
-        let map =  reuseTreePattern(map: lines, multiplier: 3)
+    static func solvePart1(input: [String]) -> String {
+        let map =  reuseTreePattern(map: input, multiplier: 3)
         let positions = getPositions(stepsRight: 3, stepsDown: 1, height: map.count)
         var trees = 0
         for pos in positions {
@@ -32,11 +24,11 @@ enum Day_3_2020: Solvable {
         return "\(trees)"
     }
 
-    private static func solvePart2(lines: [String]) -> String {
+    static func solvePart2(input: [String]) -> String {
         let moves:[(right: Int, down: Int)] = [(1,1),(3,1),(5,1),(7,1),(1,2)]
         var trees: [Int] = []
         for move in moves {
-            let map =  reuseTreePattern(map: lines, multiplier: move.right)
+            let map =  reuseTreePattern(map: input, multiplier: move.right)
             let positions = getPositions(stepsRight: move.right, stepsDown: move.down, height: map.count)
             var tree = 0
             for pos in positions {

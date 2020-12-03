@@ -8,6 +8,9 @@
 // https://adventofcode.com/2020/day/2
 
 enum Day_2_2020: Solvable {
+    static var day: Input.Day = .Day_2
+    static var year: Input.Year = .Year_2020
+
     struct Password {
         let rule: ClosedRange<Int>
         let letter: String
@@ -27,29 +30,18 @@ enum Day_2_2020: Solvable {
         }
     }
 
-    static func solve() {
-        let day: Input.Day = .Day_2
-        let year: Input.Year = .Year_2020
-
-        let lines = Input.getStringArray(for: day, in: year)
-        print("********** \(day.rawValue) Year \(year.rawValue) **********")
-        print("Solution for Part 1: \(solvePart1(lines: lines))")
-        print("Solution for Part 2: \(solvePart2(lines: lines))")
-        print("*************************************")
-    }
-
-    private static func solvePart1(lines: [String]) -> String {
+    static func solvePart1(input: [String]) -> String {
         var validPwd: [Bool] = []
-        lines.forEach { line in
+        input.forEach { line in
             validPwd.append(convertStringInPassword(line: line).isValidOldPolicie)
         }
         validPwd = validPwd.filter { $0 }
         return "\(validPwd.count)"
     }
 
-    private static func solvePart2(lines: [String]) -> String {
+    static func solvePart2(input: [String]) -> String {
         var validPwd: [Bool] = []
-        lines.forEach { line in
+        input.forEach { line in
             validPwd.append(convertStringInPassword(line: line).isValidNewPolicie)
         }
         validPwd = validPwd.filter { $0 }
