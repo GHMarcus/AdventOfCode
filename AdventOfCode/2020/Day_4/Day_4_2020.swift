@@ -34,6 +34,8 @@ enum Day_4_2020: Solvable {
         let pid: String
         let cid: String?
 
+        static let allowedCharacters = CharacterSet(charactersIn:"#abcdef0123456789").inverted
+
         enum EyeColor: String, Decodable {
             case amb, blu, brn, gry, grn, hzl, oth
         }
@@ -43,14 +45,7 @@ enum Day_4_2020: Solvable {
         }
 
         private enum CodingKeys: CodingKey {
-            case byr
-            case iyr
-            case eyr
-            case hgt
-            case hcl
-            case ecl
-            case pid
-            case cid
+            case byr, iyr, eyr, hgt, hcl, ecl, pid, cid
         }
 
         init(from decoder: Decoder) throws {
@@ -87,9 +82,7 @@ enum Day_4_2020: Solvable {
             }
 
             let hclValue = try container.decode(String.self, forKey: .hcl)
-            let allowedCharacters = CharacterSet(charactersIn:"#abcdef0123456789").inverted
-            let components = hclValue.components(separatedBy: allowedCharacters)
-            let filtered = components.joined(separator: "")
+            let filtered = hclValue.trimmingCharacters(in: Day_4_2020.ValidPresentPassport.allowedCharacters)
             if hclValue.first == "#", hclValue.count == 7, hclValue == filtered {
                 hcl = hclValue
             } else {

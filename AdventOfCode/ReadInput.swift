@@ -69,16 +69,15 @@ enum Input {
             return []
         }
 
-        // .dropLast() for the last empty line in a file
         let lines = stringContent.components(separatedBy: "\n")
         var objects: [String] = []
         var currentObject = ""
         for line in lines {
             if line.isEmpty {
                 currentObject = "{\"" + currentObject
+                    .dropLast(3)
                     .replacingOccurrences(of: ":", with: "\":\"")
                     .replacingOccurrences(of: " ", with: "\",\"")
-                    .dropLast(3)
                     .appending("\"}")
                     .replacingOccurrences(of: "\\", with: "")
                 objects.append(currentObject)
