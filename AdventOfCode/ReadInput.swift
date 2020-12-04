@@ -79,7 +79,6 @@ enum Input {
                     .replacingOccurrences(of: ":", with: "\":\"")
                     .replacingOccurrences(of: " ", with: "\",\"")
                     .appending("\"}")
-                    .replacingOccurrences(of: "\\", with: "")
                 objects.append(currentObject)
                 currentObject = ""
                 continue
