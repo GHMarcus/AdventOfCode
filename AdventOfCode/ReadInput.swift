@@ -56,4 +56,42 @@ enum Input {
         // .dropLast() for the last empty line in a file
         return stringContent.components(separatedBy: "\n").dropLast()
     }
+
+    static func getJSONArray(for day: Day, in year: Year) -> [String] {
+        let url = URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .appendingPathComponent(year.rawValue)
+            .appendingPathComponent(day.rawValue)
+            .appendingPathComponent("\(day.rawValue)_\(year.rawValue)_Input")
+
+        guard let stringContent = try? String(contentsOf: url) else {
+            print("Could not read content this file here: \(url)")
+            return []
+        }
+
+        // .dropLast() for the last empty line in a file
+        let lines = stringContent.components(separatedBy: "\n")
+        var objects: [String] = []
+        var currentObject = ""
+        for line in lines {
+            if line.isEmpty {
+                currentObject = "{\"" + currentObject
+                    .replacingOccurrences(of: ":", with: "\":\"")
+                    .replacingOccurrences(of: " ", with: "\",\"")
+                    .dropLast(3)
+                    .appending("\"}")
+                    .replacingOccurrences(of: "\\", with: "")
+                objects.append(currentObject)
+                currentObject = ""
+                continue
+            }
+            if currentObject == "" {
+                currentObject = line + "\",\""
+            } else {
+                currentObject += line + "\",\""
+            }
+        }
+
+        return objects
+    }
 }
