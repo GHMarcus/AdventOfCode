@@ -92,4 +92,35 @@ enum Input {
 
         return objects
     }
+
+    static func getGroupedArray(for day: Day, in year: Year) -> [String] {
+        let url = URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .appendingPathComponent(year.rawValue)
+            .appendingPathComponent(day.rawValue)
+            .appendingPathComponent("\(day.rawValue)_\(year.rawValue)_Input")
+
+        guard let stringContent = try? String(contentsOf: url) else {
+            print("Could not read content this file here: \(url)")
+            return []
+        }
+
+        let lines = stringContent.components(separatedBy: "\n")
+        var objects: [String] = []
+        var currentObject = ""
+        for line in lines {
+            if line.isEmpty {
+                objects.append(String(currentObject.dropLast()))
+                currentObject = ""
+                continue
+            }
+            if currentObject == "" {
+                currentObject = line + " "
+            } else {
+                currentObject += line  + " "
+            }
+        }
+
+        return objects
+    }
 }
