@@ -18,27 +18,22 @@ enum Day_7_2020: Solvable {
         let name: String
         let innerBags: [InnerBag]
 
-        init(rule: String) {
-            let splitedRule = rule.components(separatedBy: " contain ")
-            name = (splitedRule.first ?? "")
-                .replacingOccurrences(of: "bags", with: "")
-                .replacingOccurrences(of: "bag", with: "")
-                .trimmingCharacters(in: .whitespaces)
-            let innerBags = splitedRule.last?.components(separatedBy: ", ")
-            if innerBags?.first?.contains("no") ?? false {
+        init(name: String, innerBagsString: String) {
+            self.name = name
+            if innerBagsString.contains("no") {
                 self.innerBags = []
             } else {
-                var bags: [InnerBag] = []
-                innerBags?.forEach{ bagString in
-                    let number = Int(bagString.dropLast(bagString.count - 1)) ?? 0
-                    let name = String(bagString.dropFirst(2)
-                                        .replacingOccurrences(of: ".", with: "")
-                                        .replacingOccurrences(of: "bags", with: "")
-                                        .replacingOccurrences(of: "bag", with: "")
-                                        .trimmingCharacters(in: .whitespaces))
-                    bags.append(.init(number: number, name: name))
+                var innerBags: [InnerBag] = []
+                // 4 vibrant magenta, 4 light violet, 5 bright gold, 2 faded black
+                let bags = innerBagsString.components(separatedBy: ", ")
+                // 4 vibrant magenta
+                bags.forEach { bag in
+                    let splitted = bag.components(separatedBy: " ")
+                    let number = Int(splitted.first ?? "") ?? 0
+                    let name = splitted.dropFirst().joined(separator: " ")
+                    innerBags.append(.init(name: name, number: number))
                 }
-                self.innerBags = bags
+                self.innerBags = innerBags
             }
         }
 
@@ -56,13 +51,21 @@ enum Day_7_2020: Solvable {
     }
 
     struct InnerBag: Hashable {
-        let number: Int
         let name: String
+        let number: Int
     }
 
     static func solvePart1(input: [String]) -> String {
-        input.forEach { bags.append(.init(rule: $0))}
-        bags = bags.filter{ $0.innerBags != [] }
+        input.forEach { line in
+            let rule = line
+                .replacingOccurrences(of: ".", with: "")
+                .replacingOccurrences(of: " bags", with: "")
+                .replacingOccurrences(of: " bag", with: "")
+                .components(separatedBy: " contain ")
+
+
+            bags.append(.init(name: rule.first ?? "", innerBagsString: rule.last ?? ""))
+        }
 
         let directHolidingBags = bags.filter{ $0.canDirectlyHoldShineyGoldBag }
         var indirectHoldingBagNames = directHolidingBags.map{ $0.name }
@@ -90,30 +93,27 @@ enum Day_7_2020: Solvable {
         guard let goldBag = bags.first(where: { $0.name == "shiny gold" }) else {
             fatalError("Can not find gold Bag")
         }
-        let remainBags = bags.filter { $0.name != "shiny gold" }
 
-        var containingBags = numberOfInnerBags(for: goldBag, bags: bags)
-
-//        for innerBag in goldBag.innerBags {
-//            containingBags += innerBag.number + innerBag.number *
-//        }
-
-        // 220149
-
-        return "\(containingBags)"
+        return "\(numberOfInnerBags(for: goldBag))"
     }
 
-    private static func numberOfInnerBags(for currentBag: Bag, bags: [Bag]) -> Int {
+    private static func numberOfInnerBags(for currentBag: Bag) -> Int {
 
         guard !currentBag.innerBags.isEmpty else {
-            return 1
+            return 0
         }
-
-//        let leftBags = bags.filter { $0.name != innerBag.name }
 
         return currentBag.innerBags.reduce(0) { (result, next) -> Int in
-            guard let nextBag = bags.first(where: { $0.name == next.name }) else { return result }
-            return result + next.number + next.number * numberOfInnerBags(for: nextBag, bags: bags)//leftBags)
+            let nextBag = getBag(from: next)
+            return result + next.number + next.number * numberOfInnerBags(for: nextBag)
         }
+    }
+
+    private static func getBag(from innerBag: InnerBag) -> Bag {
+        guard let bag = bags.first(where: { $0.name == innerBag.name }) else {
+            fatalError("Could not find innerBag in bags")
+        }
+
+        return bag
     }
 }
