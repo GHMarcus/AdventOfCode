@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16219749257F4E77008DFBCE /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16219748257F4E77008DFBCE /* Assembler.swift */; };
 		168B96C925763D3B0047E969 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B96C825763D3B0047E969 /* main.swift */; };
 		168B96D325763DA80047E969 /* Solvable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B96D125763DA80047E969 /* Solvable.swift */; };
 		168B96D425763DA80047E969 /* ReadInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B96D225763DA80047E969 /* ReadInput.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		16219748257F4E77008DFBCE /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		168B96C525763D3B0047E969 /* AdventOfCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode; sourceTree = BUILT_PRODUCTS_DIR; };
 		168B96C825763D3B0047E969 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		168B96D125763DA80047E969 /* Solvable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solvable.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		168B96D625763DAC0047E969 /* 2020 */ = {
 			isa = PBXGroup;
 			children = (
+				16219748257F4E77008DFBCE /* Assembler.swift */,
 				168B9713257A743B0047E969 /* Year2020.swift */,
 				168B96D725763DB20047E969 /* Day_1 */,
 				168B96F225764EC80047E969 /* Day_2 */,
@@ -480,6 +483,7 @@
 				168B97CD257A76FC0047E969 /* Day_17_2020.swift in Sources */,
 				168B97C5257A76FC0047E969 /* Day_6_2020.swift in Sources */,
 				168B97C6257A76FC0047E969 /* Day_22_2020.swift in Sources */,
+				16219749257F4E77008DFBCE /* Assembler.swift in Sources */,
 				168B97BE257A76FC0047E969 /* Day_18_2020.swift in Sources */,
 				168B96D325763DA80047E969 /* Solvable.swift in Sources */,
 				168B97C8257A76FC0047E969 /* Day_13_2020.swift in Sources */,
