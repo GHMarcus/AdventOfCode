@@ -5,5 +5,9 @@
 //  Created by Marcus Gollnick on 01.12.20.
 //
 
-Year_2020().day_9.solve()
+import Foundation
 
+let start = CFAbsoluteTimeGetCurrent()
+Year_2020().day_9.solve()
+let diff = CFAbsoluteTimeGetCurrent() - start
+print("Took \(diff) seconds")
