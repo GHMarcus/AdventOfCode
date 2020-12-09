@@ -3,7 +3,7 @@
 //import Foundation
 //
 //let currentDirectory = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-//let year = "2020"
+//let year = "2015"
 //for day in 1...25 {
 //    let templateString =
 //"""
@@ -14,17 +14,17 @@
 ////  Created by Marcus Gollnick on 04.12.20.
 ////
 //
-//// https://adventofcode.com/2020/day/\(day)
+//// https://adventofcode.com/\(year)/day/\(day)
 //
-//enum Day_\(day)_2020: Solvable {
+//enum Day_\(day)_\(year): Solvable {
 //    static var day: Input.Day = .Day_\(day)
-//    static var year: Input.Year = .Year_2020
+//    static var year: Input.Year = .Year_\(year)
 //
-//    static func solvePart1(input: [Int]) -> String {
+//    static func solvePart1(input: [String]) -> String {
 //        "Add some Code here"
 //    }
 //
-//    static func solvePart2(input: [Int]) -> String {
+//    static func solvePart2(input: [String]) -> String {
 //        "Add some Code here"
 //    }
 //}
@@ -35,7 +35,7 @@
 //        .appendingPathComponent("Day_\(day)_\(year).swift")
 //
 //    let filePathInput = currentDirectory
-//        .appendingPathComponent("2020")
+//        .appendingPathComponent(year)
 //        .appendingPathComponent("Day_\(day)")
 //        .appendingPathComponent("Day_\(day)_\(year)_Input")
 //
@@ -71,13 +71,13 @@
 //let yearHeader =
 //"""
 ////
-////  Year2020.swift
+////  Year\(year).swift
 ////  AdventOfCode
 ////
 ////  Created by Marcus Gollnick on 01.12.20.
 ////
 //
-//struct Year_2020 {
+//struct Year_\(year) {
 //
 //"""
 //
@@ -98,14 +98,14 @@
 //var yearFileString = yearHeader
 //
 //for day in 1...25 {
-//    let yearPropertyTemplate = "    let day_\(day): Day_\(day)_2020.Type\n"
+//    let yearPropertyTemplate = "    let day_\(day): Day_\(day)_\(year).Type\n"
 //    yearFileString += yearPropertyTemplate
 //}
 //
 //yearFileString += yearMiddle
 //
 //for day in 1...25 {
-//    let yearInitTemplate = "        day_\(day) = Day_\(day)_2020.self\n"
+//    let yearInitTemplate = "        day_\(day) = Day_\(day)_\(year).self\n"
 //    yearFileString += yearInitTemplate
 //}
 //
@@ -113,7 +113,7 @@
 //
 //let filePathYear = currentDirectory
 //    .appendingPathComponent(year)
-//    .appendingPathComponent("Year2020.swift")
+//    .appendingPathComponent("Year\(year).swift")
 //
 //try FileManager.default.createDirectory(at: filePathYear.deletingLastPathComponent(),
 //                                        withIntermediateDirectories: true)
