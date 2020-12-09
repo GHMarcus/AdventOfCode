@@ -5,5 +5,5 @@
 //  Created by Marcus Gollnick on 01.12.20.
 //
 
-Year_2020().day_8.solve()
+Year_2020().day_9.solve()
 
