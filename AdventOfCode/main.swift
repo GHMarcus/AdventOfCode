@@ -8,6 +8,6 @@
 import Foundation
 
 let start = CFAbsoluteTimeGetCurrent()
-Year_2020().day_9.solve()
+Year_2020().day_10.solve()
 let diff = CFAbsoluteTimeGetCurrent() - start
 print("Took \(diff) seconds")
