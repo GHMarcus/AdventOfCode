@@ -7,7 +7,8 @@
 
 import Foundation
 
-let start = CFAbsoluteTimeGetCurrent()
-Year_2020().day_10.solve()
-let diff = CFAbsoluteTimeGetCurrent() - start
-print("Took \(diff) seconds")
+let startTime = CFAbsoluteTimeGetCurrent()
+Year_2020().day_13.solve()
+//Year_2015().day_5.solve()
+let diffTime = CFAbsoluteTimeGetCurrent() - startTime
+print("Took \(diffTime) seconds")
