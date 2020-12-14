@@ -25,7 +25,7 @@
 //    }
 //
 //    static func solvePart2(input: [String]) -> String {
-//        "Add some Code here"
+//        return "Add some Code here"
 //    }
 //}
 //"""
