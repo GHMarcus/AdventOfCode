@@ -380,8 +380,8 @@
 		162197832581238D008DFBCE /* Day_6 */ = {
 			isa = PBXGroup;
 			children = (
-				162197842581238D008DFBCE /* Day_6_2015.swift */,
 				162197852581238D008DFBCE /* Day_6_2015_Input */,
+				162197842581238D008DFBCE /* Day_6_2015.swift */,
 			);
 			path = Day_6;
 			sourceTree = "<group>";
@@ -596,8 +596,8 @@
 		168B9789257A76FC0047E969 /* Day_16 */ = {
 			isa = PBXGroup;
 			children = (
-				168B978A257A76FC0047E969 /* Day_16_2020.swift */,
 				168B978B257A76FC0047E969 /* Day_16_2020_Input */,
+				168B978A257A76FC0047E969 /* Day_16_2020.swift */,
 			);
 			path = Day_16;
 			sourceTree = "<group>";

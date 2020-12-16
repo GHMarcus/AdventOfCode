@@ -142,7 +142,7 @@ enum Day_14_2020: Solvable {
         var newAddresses: Array<String> = [address]
         var xRemain = true
         while xRemain {
-            outerLoop: for (aIndex, address) in newAddresses.enumerated() {
+            outerLoop: for address in newAddresses {
                 for (index, c) in Array(address).enumerated() {
                     if c == "X" {
                         var newAddress = Array(address)
