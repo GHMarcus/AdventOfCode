@@ -168,6 +168,3 @@ enum Day_14_2020: Solvable {
         return newAddresses
     }
 }
-
-
-// 12607777229252 -> To low

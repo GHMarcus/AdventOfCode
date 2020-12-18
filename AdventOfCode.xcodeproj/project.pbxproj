@@ -578,8 +578,8 @@
 		168B9783257A76FC0047E969 /* Day_20 */ = {
 			isa = PBXGroup;
 			children = (
-				168B9784257A76FC0047E969 /* Day_20_2020.swift */,
 				168B9785257A76FC0047E969 /* Day_20_2020_Input */,
+				168B9784257A76FC0047E969 /* Day_20_2020.swift */,
 			);
 			path = Day_20;
 			sourceTree = "<group>";
@@ -605,8 +605,8 @@
 		168B978C257A76FC0047E969 /* Day_21 */ = {
 			isa = PBXGroup;
 			children = (
-				168B978D257A76FC0047E969 /* Day_21_2020.swift */,
 				168B978E257A76FC0047E969 /* Day_21_2020_Input */,
+				168B978D257A76FC0047E969 /* Day_21_2020.swift */,
 			);
 			path = Day_21;
 			sourceTree = "<group>";
@@ -668,8 +668,8 @@
 		168B97A1257A76FC0047E969 /* Day_25 */ = {
 			isa = PBXGroup;
 			children = (
-				168B97A2257A76FC0047E969 /* Day_25_2020.swift */,
 				168B97A3257A76FC0047E969 /* Day_25_2020_Input */,
+				168B97A2257A76FC0047E969 /* Day_25_2020.swift */,
 			);
 			path = Day_25;
 			sourceTree = "<group>";
@@ -704,8 +704,8 @@
 		168B97AD257A76FC0047E969 /* Day_24 */ = {
 			isa = PBXGroup;
 			children = (
-				168B97AE257A76FC0047E969 /* Day_24_2020.swift */,
 				168B97AF257A76FC0047E969 /* Day_24_2020_Input */,
+				168B97AE257A76FC0047E969 /* Day_24_2020.swift */,
 			);
 			path = Day_24;
 			sourceTree = "<group>";
@@ -722,8 +722,8 @@
 		168B97B3257A76FC0047E969 /* Day_17 */ = {
 			isa = PBXGroup;
 			children = (
-				168B97B4257A76FC0047E969 /* Day_17_2020.swift */,
 				168B97B5257A76FC0047E969 /* Day_17_2020_Input */,
+				168B97B4257A76FC0047E969 /* Day_17_2020.swift */,
 			);
 			path = Day_17;
 			sourceTree = "<group>";
