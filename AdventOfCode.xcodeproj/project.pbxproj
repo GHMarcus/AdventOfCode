@@ -64,6 +64,7 @@
 		168B97CD257A76FC0047E969 /* Day_17_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97B4257A76FC0047E969 /* Day_17_2020.swift */; };
 		168B97CE257A76FC0047E969 /* Day_12_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97B7257A76FC0047E969 /* Day_12_2020.swift */; };
 		168B97CF257A76FC0047E969 /* Day_14_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97BB257A76FC0047E969 /* Day_14_2020.swift */; };
+		B36947362746C459007A6AD6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36947352746C459007A6AD6 /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -187,6 +188,7 @@
 		168B97B8257A76FC0047E969 /* Day_12_2020_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_12_2020_Input; sourceTree = "<group>"; };
 		168B97BA257A76FC0047E969 /* Day_14_2020_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_14_2020_Input; sourceTree = "<group>"; };
 		168B97BB257A76FC0047E969 /* Day_14_2020.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_14_2020.swift; sourceTree = "<group>"; };
+		B36947352746C459007A6AD6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +483,7 @@
 				168B96D225763DA80047E969 /* ReadInput.swift */,
 				168B9716257A745C0047E969 /* Script.swift */,
 				168B96D125763DA80047E969 /* Solvable.swift */,
+				B36947352746C459007A6AD6 /* StringExtensions.swift */,
 				162197512581238D008DFBCE /* 2015 */,
 				168B96D625763DAC0047E969 /* 2020 */,
 			);
@@ -817,6 +820,7 @@
 				168B96FD257779DD0047E969 /* Day_3_2020.swift in Sources */,
 				162197A52581238D008DFBCE /* Day_17_2015.swift in Sources */,
 				168B97C3257A76FC0047E969 /* Day_23_2020.swift in Sources */,
+				B36947362746C459007A6AD6 /* StringExtensions.swift in Sources */,
 				168B97C9257A76FC0047E969 /* Day_11_2020.swift in Sources */,
 				168B96D425763DA80047E969 /* ReadInput.swift in Sources */,
 				168B9711257A437E0047E969 /* Day_5_2020.swift in Sources */,
