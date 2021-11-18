@@ -344,8 +344,8 @@
 		162197772581238D008DFBCE /* Day_7 */ = {
 			isa = PBXGroup;
 			children = (
-				162197782581238D008DFBCE /* Day_7_2015.swift */,
 				162197792581238D008DFBCE /* Day_7_2015_Input */,
+				162197782581238D008DFBCE /* Day_7_2015.swift */,
 			);
 			path = Day_7;
 			sourceTree = "<group>";
@@ -985,7 +985,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XVYJXT6HDJ;
+				DEVELOPMENT_TEAM = GK7K6PVQW9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -996,7 +996,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XVYJXT6HDJ;
+				DEVELOPMENT_TEAM = GK7K6PVQW9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
