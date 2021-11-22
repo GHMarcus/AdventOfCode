@@ -66,6 +66,7 @@
 		168B97CF257A76FC0047E969 /* Day_14_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97BB257A76FC0047E969 /* Day_14_2020.swift */; };
 		B36947362746C459007A6AD6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36947352746C459007A6AD6 /* StringExtensions.swift */; };
 		B369473827478711007A6AD6 /* Array+Permutations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369473727478711007A6AD6 /* Array+Permutations.swift */; };
+		B369473B274982D4007A6AD6 /* PerfectSumProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -191,6 +192,7 @@
 		168B97BB257A76FC0047E969 /* Day_14_2020.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_14_2020.swift; sourceTree = "<group>"; };
 		B36947352746C459007A6AD6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B369473727478711007A6AD6 /* Array+Permutations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Permutations.swift"; sourceTree = "<group>"; };
+		B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectSumProblem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -756,6 +758,7 @@
 			children = (
 				B369473727478711007A6AD6 /* Array+Permutations.swift */,
 				B36947352746C459007A6AD6 /* StringExtensions.swift */,
+				B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -874,6 +877,7 @@
 				168B97C4257A76FC0047E969 /* Day_19_2020.swift in Sources */,
 				168B97C0257A76FC0047E969 /* Day_21_2020.swift in Sources */,
 				162197A32581238D008DFBCE /* Day_19_2015.swift in Sources */,
+				B369473B274982D4007A6AD6 /* PerfectSumProblem.swift in Sources */,
 				162197B62581238D008DFBCE /* Day_24_2015.swift in Sources */,
 				168B97BF257A76FC0047E969 /* Day_16_2020.swift in Sources */,
 			);
