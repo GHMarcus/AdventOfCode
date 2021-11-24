@@ -32,19 +32,18 @@ enum Day_4_2015: Solvable {
     }
 
     static func solvePart2(input: [String]) -> String {
-        "Takes too long"
-//        var number = 0
-//        let secretKey = input[0]
-//        while true {
-//            let md5Data = MD5(string:"\(secretKey)\(number)")
-//            let md5Hex = md5Data.map{ String(format: "%02hhx", $0) }.joined()
-//            if md5Hex.dropLast(md5Hex.count - 5) == "000000" {
-//                print(md5Hex)
-//                return "\(number)"
-//            } else {
-//                number += 1
-//            }
-//        }
+        var number = 0
+        let secretKey = input[0]
+        while true {
+            let md5Data = MD5(string:"\(secretKey)\(number)")
+            let md5Hex = md5Data.map{ String(format: "%02hhx", $0) }.joined()
+            if md5Hex.dropLast(md5Hex.count - 6) == "000000" {
+                print(md5Hex)
+                return "\(number)"
+            } else {
+                number += 1
+            }
+        }
     }
 
     static func MD5(string: String) -> Data {
