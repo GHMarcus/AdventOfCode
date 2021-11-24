@@ -395,8 +395,8 @@
 		162197862581238D008DFBCE /* Day_22 */ = {
 			isa = PBXGroup;
 			children = (
-				162197872581238D008DFBCE /* Day_22_2015.swift */,
 				162197882581238D008DFBCE /* Day_22_2015_Input */,
+				162197872581238D008DFBCE /* Day_22_2015.swift */,
 			);
 			path = Day_22;
 			sourceTree = "<group>";
@@ -1022,6 +1022,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
