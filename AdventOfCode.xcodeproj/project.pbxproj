@@ -119,6 +119,7 @@
 		B369480C274EA216007A6AD6 /* Day_12_2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36947EE274EA215007A6AD6 /* Day_12_2021.swift */; };
 		B369480D274EA216007A6AD6 /* Day_24_2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36947F1274EA215007A6AD6 /* Day_24_2021.swift */; };
 		B369480E274EA216007A6AD6 /* Day_23_2021.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36947F3274EA215007A6AD6 /* Day_23_2021.swift */; };
+		B3694812274F9F0A007A6AD6 /* Array+Chunks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3694811274F9F0A007A6AD6 /* Array+Chunks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -347,6 +348,7 @@
 		B36947F1274EA215007A6AD6 /* Day_24_2021.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_24_2021.swift; sourceTree = "<group>"; };
 		B36947F3274EA215007A6AD6 /* Day_23_2021.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_23_2021.swift; sourceTree = "<group>"; };
 		B36947F4274EA215007A6AD6 /* Day_23_2021_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_23_2021_Input; sourceTree = "<group>"; };
+		B3694811274F9F0A007A6AD6 /* Array+Chunks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunks.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -912,9 +914,10 @@
 		B369473927478718007A6AD6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B3694811274F9F0A007A6AD6 /* Array+Chunks.swift */,
 				B369473727478711007A6AD6 /* Array+Permutations.swift */,
-				B36947352746C459007A6AD6 /* StringExtensions.swift */,
 				B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */,
+				B36947352746C459007A6AD6 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1541,6 +1544,7 @@
 				162197B32581238D008DFBCE /* Day_14_2015.swift in Sources */,
 				168B97BD257A76FC0047E969 /* Day_20_2020.swift in Sources */,
 				162197AB2581238D008DFBCE /* Day_7_2015.swift in Sources */,
+				B3694812274F9F0A007A6AD6 /* Array+Chunks.swift in Sources */,
 				B3694790274EA1A8007A6AD6 /* Day_5_2016.swift in Sources */,
 				168B97CD257A76FC0047E969 /* Day_17_2020.swift in Sources */,
 				162197B42581238D008DFBCE /* Day_15_2015.swift in Sources */,
