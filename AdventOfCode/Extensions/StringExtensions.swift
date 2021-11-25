@@ -18,6 +18,21 @@ extension String {
         }
         return count
     }
+    
+    /*
+     https://stackoverflow.com/a/34371637
+     let str = "aabbcsdfaewdsrsfdeewraewd"
+     print(str.getCountedCharacters) // ["b": 2, "a": 4, "w": 3, "r": 2, "c": 1, "s": 3, "f": 2, "e": 4, "d": 4]
+     */
+    
+    var getCountedCharacters: Dictionary<Character,Int> {
+        self.reduce([:]) { (d, c) -> Dictionary<Character,Int> in
+            var d = d
+            let i = d[c] ?? 0
+            d[c] = i+1
+            return d
+        }
+    }
 }
 
 /*
