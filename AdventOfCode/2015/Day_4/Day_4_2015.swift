@@ -8,9 +8,7 @@
 // https://adventofcode.com/2015/day/4
 
 import Foundation
-import var CommonCrypto.CC_MD5_DIGEST_LENGTH
-import func CommonCrypto.CC_MD5
-import typealias CommonCrypto.CC_LONG
+import CryptoKit
 
 enum Day_4_2015: Solvable {
     static var day: Input.Day = .Day_4
@@ -20,8 +18,7 @@ enum Day_4_2015: Solvable {
         var number = 0
         let secretKey = input[0]
         while true {
-            let md5Data = MD5(string:"\(secretKey)\(number)")
-            let md5Hex = md5Data.map{ String(format: "%02hhx", $0) }.joined()
+            let md5Hex = MD5(string:"\(secretKey)\(number)")
             if md5Hex.dropLast(md5Hex.count - 5) == "00000" {
                 print(md5Hex)
                 return "\(number)"
@@ -35,8 +32,7 @@ enum Day_4_2015: Solvable {
         var number = 0
         let secretKey = input[0]
         while true {
-            let md5Data = MD5(string:"\(secretKey)\(number)")
-            let md5Hex = md5Data.map{ String(format: "%02hhx", $0) }.joined()
+            let md5Hex = MD5(string:"\(secretKey)\(number)")
             if md5Hex.dropLast(md5Hex.count - 6) == "000000" {
                 print(md5Hex)
                 return "\(number)"
@@ -46,20 +42,11 @@ enum Day_4_2015: Solvable {
         }
     }
 
-    static func MD5(string: String) -> Data {
-        let length = Int(CC_MD5_DIGEST_LENGTH)
-        let messageData = string.data(using:.utf8)!
-        var digestData = Data(count: length)
+    static func MD5(string: String) -> String {
+        let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
 
-        _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
-            messageData.withUnsafeBytes { messageBytes -> UInt8 in
-                if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
-                    let messageLength = CC_LONG(messageData.count)
-                    CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
-                }
-                return 0
-            }
-        }
-        return digestData
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
     }
 }
