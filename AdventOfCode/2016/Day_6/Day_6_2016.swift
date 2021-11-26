@@ -12,10 +12,46 @@ enum Day_6_2016: Solvable {
     static var year: Input.Year = .Year_2016
 
     static func solvePart1(input: [String]) -> String {
-        "Add some Code here"
+        let separatedLines = input.map{Array($0)}
+        
+        var message = ""
+        
+        for pos in 0..<separatedLines[0].count {
+            var extractedLetters: [String.Element] = []
+            for letters in separatedLines{
+                extractedLetters.append(letters[pos])
+            }
+            let mostFrequentLetter = String(extractedLetters)
+                .getCountedCharacters
+                .sorted { $0.value > $1.value }
+                .first!
+                .key
+            
+            message.append(mostFrequentLetter)
+        }
+        
+        return message
     }
 
     static func solvePart2(input: [String]) -> String {
-        return "Add some Code here"
+        let separatedLines = input.map{Array($0)}
+        
+        var message = ""
+        
+        for pos in 0..<separatedLines[0].count {
+            var extractedLetters: [String.Element] = []
+            for letters in separatedLines{
+                extractedLetters.append(letters[pos])
+            }
+            let mostFrequentLetter = String(extractedLetters)
+                .getCountedCharacters
+                .sorted { $0.value < $1.value }
+                .first!
+                .key
+            
+            message.append(mostFrequentLetter)
+        }
+        
+        return message
     }
 }
