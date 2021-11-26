@@ -976,8 +976,8 @@
 		B3694748274EA1A8007A6AD6 /* Day_5 */ = {
 			isa = PBXGroup;
 			children = (
-				B3694749274EA1A8007A6AD6 /* Day_5_2016.swift */,
 				B369474A274EA1A8007A6AD6 /* Day_5_2016_Input */,
+				B3694749274EA1A8007A6AD6 /* Day_5_2016.swift */,
 			);
 			path = Day_5;
 			sourceTree = "<group>";
@@ -1671,7 +1671,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Debug;
 		};
