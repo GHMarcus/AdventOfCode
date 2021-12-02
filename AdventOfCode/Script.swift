@@ -21,7 +21,7 @@
 //    static var year: Input.Year = .Year_\(year)
 //
 //    static func solvePart1(input: [String]) -> String {
-//        "Add some Code here"
+//        return "Add some Code here"
 //    }
 //
 //    static func solvePart2(input: [String]) -> String {
