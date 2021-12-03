@@ -11,6 +11,27 @@ enum Day_20_2020: Solvable {
     static var day: Input.Day = .Day_20
     static var year: Input.Year = .Year_2020
 
+    enum Partners {
+        case left, top
+    }
+
+    enum Position {
+        case left, right, top, bottom
+    }
+
+    /*
+     Failed
+     26 -> 2258
+     27 -> 2243
+     28 -> 2228
+     36 -> 2108
+     */
+
+    /*
+     25->2273
+     24->2288
+     */
+
     struct Tile: Equatable {
         let number: Int
         var data: [[String.Element]]
@@ -72,6 +93,14 @@ enum Day_20_2020: Solvable {
             return flippedTile
         }
 
+        func flipUp() -> Tile {
+            var flippedTile = self
+            flippedTile.data = data.reversed()
+            flippedTile.tops = self.bottoms
+            flippedTile.bottoms = self.tops
+            return flippedTile
+        }
+
         func rotateClockwise() -> Tile {
             var rotatedTile = self
             let n = self.data.count
@@ -98,22 +127,33 @@ enum Day_20_2020: Solvable {
             }
         }
 
+        mutating func removeBorders() {
+            var newData = data
+            newData.remove(at: data.count-1)
+            newData.remove(at: 0)
+            for (index, var line) in newData.enumerated() {
+                line.remove(at: line.count-1)
+                line.remove(at: 0)
+                newData[index] = line
+            }
+            data = newData
+        }
     }
 
-    static var tiles: [Tile] = []
-    static var edges: [Tile] = []
-    static var borders: [Tile] = []
-    static var middles: [Tile] = []
+    static var tiles: Dictionary<Int, Tile> = [:]
+
+    static var edges: [Int] = []
+    static var borders: [Int] = []
+    static var middles: [Int] = []
     static var picture: [[Int]] = []
 
     static func solvePart1(input: [String]) -> String {
         var number = 0
         var data: [[String.Element]] = []
 
-
         for line in input {
             guard !line.isEmpty else {
-                tiles.append(.init(number: number, data: data))
+                tiles[number] = Tile(number: number, data: data)
                 number = 0
                 data = []
                 continue
@@ -124,66 +164,61 @@ enum Day_20_2020: Solvable {
                 data.append(Array(line))
             }
         }
-        tiles.append(.init(number: number, data: data))
+        tiles[number] = Tile(number: number, data: data)
 
-
-        for (t, tile) in tiles.enumerated() {
-            searchPartner(tile: tile, t: t)
+        for tile in tiles {
+            searchPartner(tile: tile.value)
         }
 
         var corners: [Int] = []
 
         tiles.forEach{ tile in
-            if tile.isCorner {
-                corners.append(tile.number)
-//                print(tile.number)
-//                print("tops:    \(tile.tops)")
-//                print("bottoms: \(tile.bottoms)")
-//                print("lefts:   \(tile.lefts)")
-//                print("rights:  \(tile.rights)")
+            if tile.value.isCorner {
+                corners.append(tile.key)
+//                print(tile.value.number)
+//                print("tops:    \(tile.value.tops)")
+//                print("bottoms: \(tile.value.bottoms)")
+//                print("lefts:   \(tile.value.lefts)")
+//                print("rights:  \(tile.value.rights)")
 //                print()
             }
         }
-//        print(corners)
+        print(corners)
         return "\(corners.reduce(1, *))"
     }
 
     static func solvePart2(input: [String]) -> String {
-        middles = tiles
+//        tiles.forEach{ tile in
+//                print(tile.value.number)
+//                print("tops:    \(tile.value.tops)")
+//                print("bottoms: \(tile.value.bottoms)")
+//                print("lefts:   \(tile.value.lefts)")
+//                print("rights:  \(tile.value.rights)")
+//            print(tile.value.isBorder)
+//                print()
+//        }
+        middles = tiles.keys.map{ $0 }
 
-        edges = middles.filter{ $0.isCorner }
+        edges = middles.filter{ tiles[$0]!.isCorner }
         middles = middles.filter{ !edges.contains($0) }
-        borders = middles.filter { $0.isBorder }
+        borders = middles.filter{ tiles[$0]!.isBorder }
         middles = middles.filter{ !borders.contains($0) }
 
-        for tile in tiles {
-            print(tile.number)
-            print("tops:    \(tile.tops)")
-            print("bottoms: \(tile.bottoms)")
-            print("lefts:   \(tile.lefts)")
-            print("rights:  \(tile.rights)")
-            print()
+        var edge = edges.removeFirst()
+//        let edge = 1951
+//        edges = edges.filter{ $0 != 1951 }
+
+        var edgeTile = tiles[edge]!
+        var run = true
+        while run {
+            edgeTile = edgeTile.rotateClockwise()
+            tiles[edgeTile.number] = edgeTile
+            if edgeTile.tops.isEmpty && edgeTile.lefts.isEmpty {
+                run = false
+            }
         }
 
-        picture = [[edges[0].number]]
-        edges.remove(at: 0)
-
-        //[3833, 3581, 3037, 1487, 3947, 1153, 2129, 1733, 3881, 1399, 1511, 3517]
-        /*
-         [3833, 3581, 3037, 1487, 3947, 1153, 2129, 1733, 3881, 1399, 1511, 3517]
-         [1657, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2897]
-         [3313, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2017]
-         [3319, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3457]
-         [3307, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1699]
-         [2113, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3023]
-         [1723, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1873]
-         [3671, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1097]
-         [2543, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3389]
-         [2777, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3359]
-         [3583, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1103]
-         [2593, 1543, 3373, 3863, 1493, 2137, 1619, 2843, 3613, 2411, 1117]
-         */
-
+        picture = [[edge]]
         var currentTile = picture[0][0]
         currentTile = findBorders(partners: .left, position: .left, tile: currentTile)
         findRightEdge(partners: .left, currentTile: currentTile)
@@ -203,44 +238,220 @@ enum Day_20_2020: Solvable {
         currentTile = picture[0].last!
         currentTile = findBorders(partners: .top, position: .right, tile: currentTile)
 
+        var startPos = (x:1, y:1)
+
+        for y in 1..<picture.count-1 {
+            for x in 1..<picture[1].count-1 {
+                startPos.x = x
+                startPos.y = y
+                findNextMiddle(leftTile: picture[y][startPos.x-1], topTile: picture[y-1][startPos.x], pos: startPos)
+            }
+        }
+
+        rotateAndInsertLastEdge()
         picture.forEach { print($0) }
 
+        // Remove Borders
+        for var tile in tiles {
+            tile.value.removeBorders()
+            tiles[tile.key] = tile.value
+        }
 
+        var realPicture: [[String.Element]] = []
 
-        return "Add some Code here"
+        for line in picture {
+            var resulting: [String] = []
+            for element in line {
+                let tileData = tiles[element]!.data
+                var pictureData = tileData.map{String($0)}
+//                pictureData = pictureData.map({ $0 + "  "})
+                if resulting.isEmpty {
+                    resulting = Array(repeating: "", count: pictureData.count)
+                }
+                resulting = zip(resulting, pictureData).map(+)
+            }
+//            realPicture += [Array("")]
+            realPicture += resulting.map({ Array($0) })
+        }
+
+        realPicture.forEach { print(String($0)) }
+
+        let foundSnakes = findAllSnakes(picture: realPicture)
+
+        var number = 0
+        for line in realPicture {
+            for element in line {
+                if element == "#" {
+                    number += 1
+                }
+            }
+        }
+//        for i in 1...36 {
+//            print("Snakes \(i): \(number - i*15)")
+//        }
+
+        number = number - foundSnakes * 15
+        return "\(number)"
     }
 
-    static func searchPartner(tile: Tile, t: Int) {
+    static func rotateAndInsertLastEdge() {
+        let edge = edges.removeFirst()
+        var edgeTile = tiles[edge]!
+
+        let left = picture.last!.last!
+        let top = picture[picture.count-2].last!
+
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise().flipLeft()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise().flipUp()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+
+        edgeTile = edgeTile.rotateClockwise()
+        if let edgeLeft = edgeTile.lefts.first, let edgeTop = edgeTile.tops.first {
+            if edgeTile.bottoms.isEmpty && edgeTile.rights.isEmpty && edgeLeft == left && edgeTop == top {
+                picture[picture.count-1].append(edge)
+                tiles[edge] = edgeTile
+                return
+            }
+        }
+    }
+
+    static func searchPartner(tile: Tile) {
         var tile = tile
-        for (p, partnerTile) in tiles.enumerated() {
-            if tile.number == partnerTile.number {
+        for partnerTile in tiles {
+            if tile.number == partnerTile.value.number {
                 continue
             }
 
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
 
             tile = tile.rotateClockwise()
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
 
             tile = tile.rotateClockwise()
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
 
             tile = tile.rotateClockwise()
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
 
-            tile = tile.flipLeft()
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
-
-            tile = tile.rotateClockwise()
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
+            tile = tile.rotateClockwise().flipLeft()
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
 
             tile = tile.rotateClockwise()
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
 
             tile = tile.rotateClockwise()
-            tile = checkBorder(tile: tile, partnerTile: partnerTile)
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
+
+            tile = tile.rotateClockwise()
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
+
+            tile = tile.rotateClockwise().flipUp()
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
+
+            tile = tile.rotateClockwise()
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
+
+            tile = tile.rotateClockwise()
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
+
+            tile = tile.rotateClockwise()
+            tile = checkBorder(tile: tile, partnerTile: partnerTile.value)
         }
-        tiles[t] = tile
+        tiles[tile.number] = tile
     }
 
     static func checkBorder(tile: Tile, partnerTile: Tile) -> Tile {
@@ -264,27 +475,115 @@ enum Day_20_2020: Solvable {
         return tile
     }
 
-    enum Partners {
-        case left, top
-    }
-
-    enum Position {
-        case left, right, top, bottom
-    }
-
     static func findRightEdge(partners: Partners, currentTile: Int) {
-        for (index, var edge) in edges.enumerated() {
+        for (index, edgeNumber) in edges.enumerated() {
+            var edge = tiles[edgeNumber]!
             let leftRight: Bool
-            let edgePartners: [Int]
+            var edgePartners = edge.getBorderPartners(partners: partners)
             switch partners {
             case .left:
                 leftRight = true
-                edgePartners = edge.lefts
             case .top:
                 leftRight = false
-                edgePartners = edge.tops
+            }
+            //TODO: Es müssen auch die Ränder übereinstimmen
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
+            }
+            edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
+            }
+            edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
+            }
+            edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
+            }
+            edge = edge.rotateClockwise().flipLeft()
+            edgePartners = edge.getBorderPartners(partners: partners)
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
+            }
+            edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
+            }
+            edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
+            }
+            edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
+            if edgePartners.contains(currentTile) {
+                if leftRight {
+                    picture[0].append(edge.number)
+                } else {
+                    picture.append([edge.number])
+                }
+                edges.remove(at: index)
+                tiles[edgeNumber] = edge
+                break
             }
 
+            edge = edge.rotateClockwise().flipUp()
+            edgePartners = edge.getBorderPartners(partners: partners)
             if edgePartners.contains(currentTile) {
                 if leftRight {
                     picture[0].append(edge.number)
@@ -292,9 +591,11 @@ enum Day_20_2020: Solvable {
                     picture.append([edge.number])
                 }
                 edges.remove(at: index)
-                continue
+                tiles[edgeNumber] = edge
+                break
             }
             edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
             if edgePartners.contains(currentTile) {
                 if leftRight {
                     picture[0].append(edge.number)
@@ -302,9 +603,11 @@ enum Day_20_2020: Solvable {
                     picture.append([edge.number])
                 }
                 edges.remove(at: index)
-                continue
+                tiles[edgeNumber] = edge
+                break
             }
             edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
             if edgePartners.contains(currentTile) {
                 if leftRight {
                     picture[0].append(edge.number)
@@ -312,9 +615,11 @@ enum Day_20_2020: Solvable {
                     picture.append([edge.number])
                 }
                 edges.remove(at: index)
-                continue
+                tiles[edgeNumber] = edge
+                break
             }
             edge = edge.rotateClockwise()
+            edgePartners = edge.getBorderPartners(partners: partners)
             if edgePartners.contains(currentTile) {
                 if leftRight {
                     picture[0].append(edge.number)
@@ -322,47 +627,8 @@ enum Day_20_2020: Solvable {
                     picture.append([edge.number])
                 }
                 edges.remove(at: index)
-                continue
-            }
-            edge = edge.flipLeft()
-            if edgePartners.contains(currentTile) {
-                if leftRight {
-                    picture[0].append(edge.number)
-                } else {
-                    picture.append([edge.number])
-                }
-                edges.remove(at: index)
-                continue
-            }
-            edge = edge.rotateClockwise()
-            if edgePartners.contains(currentTile) {
-                if leftRight {
-                    picture[0].append(edge.number)
-                } else {
-                    picture.append([edge.number])
-                }
-                edges.remove(at: index)
-                continue
-            }
-            edge = edge.rotateClockwise()
-            if edgePartners.contains(currentTile) {
-                if leftRight {
-                    picture[0].append(edge.number)
-                } else {
-                    picture.append([edge.number])
-                }
-                edges.remove(at: index)
-                continue
-            }
-            edge = edge.rotateClockwise()
-            if edgePartners.contains(currentTile) {
-                if leftRight {
-                    picture[0].append(edge.number)
-                } else {
-                    picture.append([edge.number])
-                }
-                edges.remove(at: index)
-                continue
+                tiles[edgeNumber] = edge
+                break
             }
         }
     }
@@ -373,7 +639,8 @@ enum Day_20_2020: Solvable {
         for _ in 0..<borders.count {
             maxRight += 1
             let maxBottom = picture.count - 1
-            for (index, var border) in borders.enumerated() {
+            for (index, borderNumber) in borders.enumerated() {
+                var border = tiles[borderNumber]!
                 var borderPartners = border.getBorderPartners(partners: partners)
                 if borderPartners.contains(currentTile) {
                     switch position {
@@ -388,6 +655,7 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
                 border = border.rotateClockwise()
@@ -405,6 +673,7 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
                 border = border.rotateClockwise()
@@ -422,6 +691,7 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
                 border = border.rotateClockwise()
@@ -439,9 +709,11 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
                 border = border.rotateClockwise().flipLeft()
+//                border = border.flipLeft()
                 borderPartners = border.getBorderPartners(partners: partners)
                 if borderPartners.contains(currentTile) {
                     switch position {
@@ -456,6 +728,7 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
                 border = border.rotateClockwise()
@@ -473,6 +746,7 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
                 border = border.rotateClockwise()
@@ -490,6 +764,7 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
                 border = border.rotateClockwise()
@@ -507,6 +782,80 @@ enum Day_20_2020: Solvable {
                     }
                     currentTile = border.number
                     borders.remove(at: index)
+                    tiles[borderNumber] = border
+                    break
+                }
+                border = border.rotateClockwise().flipUp()
+//                border = border.flipLeft()
+                borderPartners = border.getBorderPartners(partners: partners)
+                if borderPartners.contains(currentTile) {
+                    switch position {
+                    case .left:
+                        picture[0].append(border.number)
+                    case .right:
+                        picture[maxRight].append(border.number)
+                    case .top:
+                        picture.append([border.number])
+                    case .bottom:
+                        picture[maxBottom].append(border.number)
+                    }
+                    currentTile = border.number
+                    borders.remove(at: index)
+                    tiles[borderNumber] = border
+                    break
+                }
+                border = border.rotateClockwise()
+                borderPartners = border.getBorderPartners(partners: partners)
+                if borderPartners.contains(currentTile) {
+                    switch position {
+                    case .left:
+                        picture[0].append(border.number)
+                    case .right:
+                        picture[maxRight].append(border.number)
+                    case .top:
+                        picture.append([border.number])
+                    case .bottom:
+                        picture[maxBottom].append(border.number)
+                    }
+                    currentTile = border.number
+                    borders.remove(at: index)
+                    tiles[borderNumber] = border
+                    break
+                }
+                border = border.rotateClockwise()
+                borderPartners = border.getBorderPartners(partners: partners)
+                if borderPartners.contains(currentTile) {
+                    switch position {
+                    case .left:
+                        picture[0].append(border.number)
+                    case .right:
+                        picture[maxRight].append(border.number)
+                    case .top:
+                        picture.append([border.number])
+                    case .bottom:
+                        picture[maxBottom].append(border.number)
+                    }
+                    currentTile = border.number
+                    borders.remove(at: index)
+                    tiles[borderNumber] = border
+                    break
+                }
+                border = border.rotateClockwise()
+                borderPartners = border.getBorderPartners(partners: partners)
+                if borderPartners.contains(currentTile) {
+                    switch position {
+                    case .left:
+                        picture[0].append(border.number)
+                    case .right:
+                        picture[maxRight].append(border.number)
+                    case .top:
+                        picture.append([border.number])
+                    case .bottom:
+                        picture[maxBottom].append(border.number)
+                    }
+                    currentTile = border.number
+                    borders.remove(at: index)
+                    tiles[borderNumber] = border
                     break
                 }
             }
@@ -514,4 +863,207 @@ enum Day_20_2020: Solvable {
 
         return currentTile
     }
+
+    static func findNextMiddle(leftTile: Int, topTile: Int, pos: (x: Int, y: Int)) {
+        if pos.x >= picture[1].count || pos.y >= picture.count - 1 {
+            return
+        }
+        for (index, middlesNumber) in middles.enumerated() {
+            var middle = tiles[middlesNumber]!
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise().flipLeft()
+//            middle = middle.flipLeft()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise().flipUp()
+//            middle = middle.flipLeft()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+            middle = middle.rotateClockwise()
+            if middle.lefts.contains(leftTile) && middle.tops.contains(topTile) {
+                picture[pos.y][pos.x] = middle.number
+                middles.remove(at: index)
+                tiles[middlesNumber] = middle
+                break
+            }
+        }
+    }
+
+    static func findAllSnakes(picture: [[String.Element]]) -> Int {
+        var picture = picture
+        var foundSnakes: [Int] = []
+
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        picture = flipPictureLeft(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        picture = flipPictureUp(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+        picture = rotatePictureClockwise(picture: picture)
+        foundSnakes.append(findSnakes(in: picture))
+
+        print(foundSnakes)
+
+//        return foundSnakes.reduce(0, +)
+        return foundSnakes.max() ?? 0
+    }
+
+    static func findSnakes(in picture: [[String.Element]]) -> Int {
+
+        /*
+                           #
+         #    ##    ##    ###
+          #  #  #  #  #  #
+         */
+
+        var changedPicture = picture
+
+        let snakePositions: [(x: Int, y: Int)] = [
+            (0,0),
+            (1,1),
+            (4,1),
+            (5,0),
+            (6,0),
+            (7,1),
+            (10,1),
+            (11,0),
+            (12,0),
+            (13,1),
+            (16,1),
+            (17,0),
+            (18,0),
+            (18,-1),
+            (19,0)
+        ]
+        var foundSnakes = 0
+        for y in 1..<changedPicture.count-1 {
+            for x in 0..<changedPicture[0].count-19 {
+                let start = (x: x, y: y)
+                var found = true
+                for pos in snakePositions {
+                    if changedPicture[start.y + pos.y][start.x + pos.x] != "#" {
+                        found = false
+                        break
+                    }
+                }
+                if found {
+                    for pos in snakePositions {
+                        changedPicture[start.y + pos.y][start.x + pos.x] = "O"
+                    }
+//                    print()
+//                    changedPicture.forEach {print(String($0))}
+                    foundSnakes += 1
+                }
+            }
+        }
+        return foundSnakes
+    }
+
+    static func flipPictureLeft(picture: [[String.Element]]) -> [[String.Element]] {
+        var flippedPicture: [[String.Element]] = []
+        picture.forEach{ flippedPicture.append($0.reversed()) }
+        return flippedPicture
+    }
+
+    static func flipPictureUp(picture: [[String.Element]]) -> [[String.Element]] {
+        return picture.reversed()
+    }
+
+    static func rotatePictureClockwise(picture: [[String.Element]]) -> [[String.Element]] {
+        var rotatedPicture: [[String.Element]] = picture
+        let n = picture.count
+        for i in 0..<picture.count {
+            for j in 0..<picture[0].count{
+                rotatedPicture[i][j] = picture[n - j - 1][i]
+            }
+        }
+        return rotatedPicture
+    }
 }
+
