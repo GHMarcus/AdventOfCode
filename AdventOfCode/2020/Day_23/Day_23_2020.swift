@@ -68,61 +68,59 @@ enum Day_23_2020: Solvable {
     }
 
     static func solvePart2(input: [String]) -> String {
-        let line: Array<Int> = Array(input[0]).compactMap { Int(String($0)) }
-        let cups: NSMutableArray = NSMutableArray(array: line)
+        let line: Array<String.Element> = Array(input[0])
+        var cups = line.compactMap({ Int(String($0)) })
 
         for i in 10...1000000 {
-            cups.add(i)
+            cups.append(i)
         }
 
-        let highestCup = 1000000
-        let lowestCup = 1
+        let highestCup = cups.max()!
+        let lowestCup = cups.min()!
+
 
         var round = 1
         let maxRounds = 10000000
 
         var currentCup = 0
-        var pickups: [Any] = []
+        var pickups: ArraySlice<Int> = []
         var destination = 0
         var destinationIndex = 0
 
         while round <= maxRounds {
-            if round % 1000 == 0 {
-                print(round)
+            if round % 10000 == 0 {
+                print("\(Double(round) / Double(maxRounds) * 100) %")
             }
-            currentCup = cups[0] as! Int
-            cups.removeObject(at: 0)
-            pickups = cups.objects(at: .init(integersIn: 0...2))
-            cups.removeObjects(in: .init(0...2))
+            currentCup = cups.removeFirst()
+            pickups = cups[0...2]
+            cups.removeFirst(3)
 
             destination = currentCup - 1
             if destination < lowestCup {
                 destination = highestCup
             }
-            let intPickups = pickups as! [Int]
-            while intPickups.contains(destination) {
-                destination =  destination - 1
+            while pickups.contains(destination) {
+                destination -= 1
                 if destination < lowestCup {
                     destination = highestCup
                 }
             }
-            destinationIndex = cups.index(of: destination) + 1
-//            destinationIndex = 0
-//            for i in cups {
-//                destinationIndex += 1
-//                if i == destination {
-//                    break
-//                }
-//            }
+            destinationIndex = 0
+            for i in cups {
+                destinationIndex += 1
+                if i == destination {
+                    break
+                }
+            }
 
-            cups.insert(pickups, at: destinationIndex)
-            cups.add(currentCup)
+            cups.insert(contentsOf: pickups, at: destinationIndex)
+            cups.append(currentCup)
 
-            round = round + 1
+            round += 1
         }
 
-        let oneIndex = cups.index(of: 1)
+        let oneIndex = cups.firstIndex(of: 1)!
 
-        return "\((cups[oneIndex+1] as! Int) * (cups[oneIndex+2] as! Int))"
+        return "\((cups[oneIndex+1]) * (cups[oneIndex+2]))"
     }
 }
