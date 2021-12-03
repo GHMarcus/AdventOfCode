@@ -41,44 +41,57 @@ enum Day_13_2020: Solvable {
     }
 
     static func solvePart2(input: [String]) -> String {
-        let allBuses = (input.last ?? "")
-            .components(separatedBy: ",")
-
-        var offsets: [UInt64] = []
-        for (index, bus) in allBuses.enumerated() {
-            if bus != "x" {
-                offsets.append(UInt64(index))
-            }
-        }
-
-        let buses = allBuses.compactMap { UInt64($0) }
-        let timeInterval = (buses.max() ?? 1) / (buses.first ?? 1) * (buses.first ?? 1)
-        print(timeInterval)
-        var timeStamp = timeInterval
-        var border = 100000000000
-        let borderInterval = 100000000000
-
-        // Took 2.791465997695923 seconds -> 100000000000 => 40 min
-        while true {
-            if timeStamp > border {
-                print(timeStamp)
-                border += borderInterval
-                print("Took \(CFAbsoluteTimeGetCurrent() - startTime) seconds")
-            }
-            var allSame = true
-            for (index, offset) in offsets.enumerated() {
-                let offsetTime = timeStamp + offset
-                if offsetTime % buses[index] != 0 {
-                    allSame = false
-                    break
+        let pairs: [(Int, Int)] = input[1].split(separator: ",")
+            .enumerated()
+            .compactMap { (index: Int, value: Substring) in
+                if let int = Int(value) {
+                    var index = -index
+                    while index < 0 { index += int }
+                    return (index, int)
+                } else {
+                    return nil
                 }
             }
-            if allSame {
-                return "\(timeStamp)"
-            }
-            timeStamp += timeInterval
-        }
+        let a = pairs.map { $0.0 }
+        let n = pairs.map { $0.1 }
 
+        return ("\(chineseRemainderTheorem(a, n))")
     }
 
+
+    static func euclideanAlgorithm(_ m: Int, _ n: Int) -> (Int, Int) {
+        if m % n == 0 {
+            return (0, 1)
+        } else {
+            let rs = euclideanAlgorithm(n % m, m)
+            let r = rs.1 - rs.0 * (n / m)
+            let s = rs.0
+
+            return (r, s)
+        }
+    }
+
+    static func gcd(_ m: Int, _ n: Int) -> Int {
+        let rs = euclideanAlgorithm(m, n)
+        return m * rs.0 + n * rs.1
+    }
+
+    static func chineseRemainderTheorem(_ a_i: [Int], _ n_i: [Int]) -> Int {
+
+        // Calculate factor N
+        let N = n_i.map { $0 }.reduce(1, *)
+
+        // Using euclidean algorithm to calculate r_i, s_i
+        let s = n_i.reduce(into: []) { s, n in
+            s.append(euclideanAlgorithm(n, N / n).1)
+        }
+
+        // Solve for x
+        let x = a_i.enumerated().reduce(0) {
+            $0 + $1.1 * s[$1.0] * (N / n_i[$1.0])
+        }
+
+        // Return minimal solution
+        return abs(x % N)
+    }
 }
