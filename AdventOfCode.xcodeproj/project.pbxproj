@@ -64,6 +64,7 @@
 		168B97CD257A76FC0047E969 /* Day_17_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97B4257A76FC0047E969 /* Day_17_2020.swift */; };
 		168B97CE257A76FC0047E969 /* Day_12_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97B7257A76FC0047E969 /* Day_12_2020.swift */; };
 		168B97CF257A76FC0047E969 /* Day_14_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97BB257A76FC0047E969 /* Day_14_2020.swift */; };
+		16C0BE9B275B87F700E3B087 /* Collection+Transposed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C0BE9A275B87F700E3B087 /* Collection+Transposed.swift */; };
 		B36947362746C459007A6AD6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36947352746C459007A6AD6 /* StringExtensions.swift */; };
 		B369473827478711007A6AD6 /* Array+Permutations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369473727478711007A6AD6 /* Array+Permutations.swift */; };
 		B369473B274982D4007A6AD6 /* PerfectSumProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */; };
@@ -243,6 +244,7 @@
 		168B97B8257A76FC0047E969 /* Day_12_2020_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_12_2020_Input; sourceTree = "<group>"; };
 		168B97BA257A76FC0047E969 /* Day_14_2020_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_14_2020_Input; sourceTree = "<group>"; };
 		168B97BB257A76FC0047E969 /* Day_14_2020.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_14_2020.swift; sourceTree = "<group>"; };
+		16C0BE9A275B87F700E3B087 /* Collection+Transposed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Transposed.swift"; sourceTree = "<group>"; };
 		B36947352746C459007A6AD6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B369473727478711007A6AD6 /* Array+Permutations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Permutations.swift"; sourceTree = "<group>"; };
 		B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectSumProblem.swift; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 			children = (
 				B3694811274F9F0A007A6AD6 /* Array+Chunks.swift */,
 				B369473727478711007A6AD6 /* Array+Permutations.swift */,
+				16C0BE9A275B87F700E3B087 /* Collection+Transposed.swift */,
 				B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */,
 				B36947352746C459007A6AD6 /* StringExtensions.swift */,
 			);
@@ -1497,6 +1500,7 @@
 			files = (
 				162197B02581238D008DFBCE /* Day_22_2015.swift in Sources */,
 				162197AE2581238D008DFBCE /* Day_1_2015.swift in Sources */,
+				16C0BE9B275B87F700E3B087 /* Collection+Transposed.swift in Sources */,
 				B3694791274EA1A8007A6AD6 /* Day_2_2016.swift in Sources */,
 				B369479B274EA1A8007A6AD6 /* Day_7_2016.swift in Sources */,
 				162197AD2581238D008DFBCE /* Day_8_2015.swift in Sources */,
@@ -1732,8 +1736,9 @@
 		168B96CD25763D3B0047E969 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GK7K6PVQW9;
+				DEVELOPMENT_TEAM = XVYJXT6HDJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1745,8 +1750,9 @@
 		168B96CE25763D3B0047E969 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GK7K6PVQW9;
+				DEVELOPMENT_TEAM = XVYJXT6HDJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				PRODUCT_NAME = "$(TARGET_NAME)";

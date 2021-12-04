@@ -30,24 +30,18 @@ enum Day_4_2021: Solvable {
         }
 
         var hasBingo: Bool {
-            for row in 0..<numbers.count {
-                let bingo = numbers[row].reduce(true) { partialResult, value in
-                    partialResult && value.isMarked
-                }
-                if bingo {
+            for row in numbers {
+                if row.allSatisfy(\.isMarked) {
                     return true
                 }
             }
 
-            for column in 0..<numbers[0].count {
-                var bingo = true
-                for row in 0..<numbers.count {
-                    bingo = bingo && numbers[row][column].isMarked
-                }
-                if bingo {
+            for column in numbers.transposed {
+                if column.allSatisfy(\.isMarked) {
                     return true
                 }
             }
+
             return false
         }
 
