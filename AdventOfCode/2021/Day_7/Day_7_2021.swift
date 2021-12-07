@@ -25,27 +25,25 @@ enum Day_7_2021: Solvable {
 
         return "\(minFuel)"
     }
-
+    
     static func solvePart2(input: [String]) -> String {
         let  positions = input[0].components(separatedBy: ",").compactMap { Int($0) }
         
         var minFuel = Int.max
         for pos in 0...(positions.max()!) {
             var fuel = 0
-        round: for position in  positions {
+            for position in  positions {
                 let distance = abs(position-pos)
                 if distance > 0 {
-                    for f in  1...distance {
-                        fuel += f
-                        if fuel > minFuel {
-                            break round
-                        }
+                    fuel += (0...distance).reduce(0, +)
+                    if fuel > minFuel {
+                        break
                     }
                 }
             }
             minFuel = min(fuel, minFuel)
         }
-
+        
         return "\(minFuel)"
     }
 }
