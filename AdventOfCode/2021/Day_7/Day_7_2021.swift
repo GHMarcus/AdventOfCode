@@ -12,10 +12,41 @@ enum Day_7_2021: Solvable {
     static var year: Input.Year = .Year_2021
 
     static func solvePart1(input: [String]) -> String {
-        "Add some Code here"
+        let  positions = input[0].components(separatedBy: ",").compactMap { Int($0) }
+
+        var minFuel = Int.max
+        for pos in 0...(positions.max()!) {
+            var fuel = 0
+            for position in  positions {
+                fuel += abs(position-pos)
+            }
+            minFuel = min(fuel, minFuel)
+        }
+
+        return "\(minFuel)"
     }
 
     static func solvePart2(input: [String]) -> String {
-        return "Add some Code here"
+        let  positions = input[0].components(separatedBy: ",").compactMap { Int($0) }
+        
+        var minFuel = Int.max
+        for pos in 0...(positions.max()!) {
+            var fuel = 0
+        round: for position in  positions {
+                let distance = abs(position-pos)
+                if distance > 0 {
+                    for f in  1...distance {
+                        fuel += f
+                        if fuel > minFuel {
+                            break round
+                        }
+                    }
+                }
+            }
+            minFuel = min(fuel, minFuel)
+        }
+
+        return "\(minFuel)"
     }
 }
+
