@@ -1294,8 +1294,8 @@
 		B36947C1274EA215007A6AD6 /* Day_11 */ = {
 			isa = PBXGroup;
 			children = (
-				B36947C2274EA215007A6AD6 /* Day_11_2021.swift */,
 				B36947C3274EA215007A6AD6 /* Day_11_2021_Input */,
+				B36947C2274EA215007A6AD6 /* Day_11_2021.swift */,
 			);
 			path = Day_11;
 			sourceTree = "<group>";
@@ -1679,7 +1679,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1733,7 +1733,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};
