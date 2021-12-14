@@ -1402,8 +1402,8 @@
 		B36947E6274EA215007A6AD6 /* Day_14 */ = {
 			isa = PBXGroup;
 			children = (
-				B36947E7274EA215007A6AD6 /* Day_14_2021.swift */,
 				B36947E8274EA215007A6AD6 /* Day_14_2021_Input */,
+				B36947E7274EA215007A6AD6 /* Day_14_2021.swift */,
 			);
 			path = Day_14;
 			sourceTree = "<group>";
@@ -1662,7 +1662,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
