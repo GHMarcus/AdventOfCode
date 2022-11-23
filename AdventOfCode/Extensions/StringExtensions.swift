@@ -68,3 +68,20 @@ extension StringProtocol {
         return result
     }
 }
+
+/*
+ https://stackoverflow.com/a/28889329
+ 
+ letterValue: Returns the numbers from 1 to 26 for the letters a to z
+ wordValue: Returns the sum of the letterValues
+ 
+ */
+extension Character {
+    static let alphabetValue = zip("abcdefghijklmnopqrstuvwxyz", 1...26).reduce(into: [:]) { $0[$1.0] = $1.1 }
+    private var lowercased: Character { .init(lowercased()) }
+    var letterValue: Int? { Self.alphabetValue[lowercased] }
+}
+
+extension String {
+    var wordValue: Int { compactMap(\.letterValue).reduce(0, +) }
+}

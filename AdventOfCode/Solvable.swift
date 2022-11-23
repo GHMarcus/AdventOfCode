@@ -32,4 +32,8 @@ extension Solvable {
     static func input() -> [Int] {
         Input.getIntArray(for: day, in: year)
     }
+    
+    static func input() -> [Character] {
+        Array(Input.getStringArray(for: day, in: year).first ?? "")
+    }
 }

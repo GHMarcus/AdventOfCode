@@ -12,6 +12,7 @@ enum Input {
     enum Year: String {
         case Year_2015 = "2015"
         case Year_2016 = "2016"
+        case Year_2018 = "2018"
         case Year_2020 = "2020"
         case Year_2021 = "2021"
     }
