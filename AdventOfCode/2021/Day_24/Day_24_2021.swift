@@ -12,43 +12,10 @@ enum Day_24_2021: Solvable {
     static var year: Input.Year = .Year_2021
 
     static func solvePart1(input: [String]) -> String {
-        var calories: [Int] = []
-
-        var currentElfsCalorien = 0
-        for line in input {
-            if line.isEmpty {
-                calories.append(currentElfsCalorien)
-                currentElfsCalorien = 0
-                continue
-            }
-
-            currentElfsCalorien += Int(line)!
-        }
-        calories.append(currentElfsCalorien)
-
-
-        return "\(calories.max()!)"
+        "Add some Code here"
     }
 
     static func solvePart2(input: [String]) -> String {
-        var calories: [Int] = []
-
-        var currentElfsCalorien = 0
-        for line in input {
-            if line.isEmpty {
-                calories.append(currentElfsCalorien)
-                currentElfsCalorien = 0
-                continue
-            }
-
-            currentElfsCalorien += Int(line)!
-        }
-        calories.append(currentElfsCalorien)
-
-        calories.sort { $0 > $1 }
-
-        let total = calories.prefix(3).reduce(0, +)
-
-        return "\(total)"
+        return "Add some Code here"
     }
 }
