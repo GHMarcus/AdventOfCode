@@ -78,8 +78,10 @@ extension StringProtocol {
  */
 extension Character {
     static let alphabetValue = zip("abcdefghijklmnopqrstuvwxyz", 1...26).reduce(into: [:]) { $0[$1.0] = $1.1 }
+    static let completeAlphabetValue = zip("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", 1...52).reduce(into: [:]) { $0[$1.0] = $1.1 }
     private var lowercased: Character { .init(lowercased()) }
     var letterValue: Int? { Self.alphabetValue[lowercased] }
+    var letterValueCaseSensitive: Int? { Self.completeAlphabetValue[self] }
 }
 
 extension String {
