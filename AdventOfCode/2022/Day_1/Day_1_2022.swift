@@ -12,7 +12,7 @@ enum Day_1_2022: Solvable {
     static var year: Input.Year = .Year_2022
 
     static func solvePart1(input: [String]) -> String {
-        var calories = sumUpCaloriesPerElf(for: input)
+        let calories = sumUpCaloriesPerElf(for: input)
 
         return "\(calories.max()!)"
     }
