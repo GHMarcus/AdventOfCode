@@ -10,9 +10,51 @@
 enum Day_7_2022: Solvable {
     static var day: Input.Day = .Day_7
     static var year: Input.Year = .Year_2022
-
-    static var dirsToDelete: [Dir] = []
-
+    
+    enum LogLine {
+        case command(Command)
+        case output(Output)
+    }
+    
+    enum Command {
+        case changeDirectory(String)
+        case listFiles
+        
+        init?(from str: String) {
+            if str.contains("$") {
+                let cmp = str.components(separatedBy: " ")
+                switch cmp[1] {
+                case "ls":
+                    self = .listFiles
+                case "cd":
+                    self = .changeDirectory(cmp[2])
+                default:
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    enum Output {
+        case directory
+        case file(File)
+        
+        init?(from str: String) {
+            let cmp = str.components(separatedBy: " ")
+            switch cmp[0] {
+            case "$":
+                return nil
+            case "dir":
+                self = .directory
+            default:
+                let file = File(name: cmp[1], size: Int(cmp[0])!)
+                self = .file(file)
+            }
+        }
+    }
+    
     class File {
         let name: String
         let size: Int
@@ -23,16 +65,16 @@ enum Day_7_2022: Solvable {
         }
     }
 
-    class Dir {
+    class Directory {
         let name: String
-        var parent: Dir?
-        var subDirs: [Dir]
+        var parent: Directory?
+        var subDirectories: [Directory]
         var files: [File]
 
-        init(name: String, parent: Dir? = nil, subDirs: [Dir], files: [File]) {
+        init(name: String, parent: Directory? = nil, subDirectories: [Directory] = [], files: [File] = []) {
             self.name = name
             self.parent = parent
-            self.subDirs = subDirs
+            self.subDirectories = subDirectories
             self.files = files
         }
 
@@ -41,7 +83,7 @@ enum Day_7_2022: Solvable {
                 partialResult + file.size
             }
 
-            let dirSize = subDirs.reduce(0) { partialResult, dir in
+            let dirSize = subDirectories.reduce(0) { partialResult, dir in
                 partialResult + dir.size
             }
 
@@ -50,113 +92,116 @@ enum Day_7_2022: Solvable {
     }
 
     static func solvePart1(input: [String]) -> String {
-        var startDir: Dir?
-        var currentDir: Dir?
+        
+        let startDirectory = createFileTree(for: input)
 
-        for line in input {
-            if line.contains("$") {
-                if line.contains("cd") && !line.contains(".."){
-                    let newDir = Dir(
-                        name: line.components(separatedBy: " ")[2],
-                        parent: currentDir,
-                        subDirs: [],
-                        files: []
-                    )
-                    currentDir?.subDirs.append(newDir)
-                    currentDir = newDir
-                    if newDir.name == "/" {
-                        startDir = newDir
-                    }
-                } else if line.contains("cd") {
-                    currentDir = currentDir?.parent
-                } else if line.contains("ls") {
-                    continue
-                }
-            } else {
-                if !line.contains("dir") {
-                    let cmp = line.components(separatedBy: " ")
-                    let newFile = File(name: cmp[1], size: Int(cmp[0])!)
-                    currentDir?.files.append(newFile)
-                }
+        let sum = sumOfSmallDirectories(for: startDirectory)
+        
+        printFileTree(form: startDirectory, with: 0)
 
-            }
-        }
-
-        let sum = startDir?.subDirs.reduce(0, { partialResult, dir in
-            partialResult + sumOfSmallDirs(dir: dir)
-        })
-
-
-        return "\(sum ?? -1)"
+        return "\(sum)"
     }
 
     static func solvePart2(input: [String]) -> String {
-        var startDir: Dir?
-        var currentDir: Dir?
+        
+        let startDirectory = createFileTree(for: input)
 
-        for line in input {
-            if line.contains("$") {
-                if line.contains("cd") && !line.contains(".."){
-                    let newDir = Dir(
-                        name: line.components(separatedBy: " ")[2],
-                        parent: currentDir,
-                        subDirs: [],
-                        files: []
-                    )
-                    currentDir?.subDirs.append(newDir)
-                    currentDir = newDir
-                    if newDir.name == "/" {
-                        startDir = newDir
-                    }
-                } else if line.contains("cd") {
-                    currentDir = currentDir?.parent
-                } else if line.contains("ls") {
-                    continue
-                }
-            } else {
-                if !line.contains("dir") {
-                    let cmp = line.components(separatedBy: " ")
-                    let newFile = File(name: cmp[1], size: Int(cmp[0])!)
-                    currentDir?.files.append(newFile)
-                }
+        let sizeWhichMustBeDeleted = abs(40000000 - (startDirectory.size))
 
-            }
-        }
-
-        let sizeWhichMustBeDeleted = abs(40000000 - (startDir?.size ?? 0))
-        print(sizeWhichMustBeDeleted)
-
-        findDirsToDelete(minSizeToDelete: sizeWhichMustBeDeleted, dir: startDir!)
-
-        let smalestDir = dirsToDelete.sorted {
+        let directoriesToDelete = findDirectoriesToDelete(for: sizeWhichMustBeDeleted, in: startDirectory)
+        
+        let smallestDir = directoriesToDelete.sorted {
             $0.size < $1.size
         }.first!
 
-        return "\(smalestDir.name): \(smalestDir.size)"
+        return "\(smallestDir.size)"
+    }
+    
+    private static func createFileTree(for input: [String]) -> Directory {
+        var startDirectory: Directory?
+        var currentDir: Directory?
+        
+        let convertedInput: [LogLine] = input.compactMap {
+            if let command = Command(from: $0) {
+                return .command(command)
+            } else if let output = Output(from: $0) {
+                return .output(output)
+            } else {
+                return nil
+            }
+        }
+        
+        for line in convertedInput {
+            switch line {
+            case .command(let command):
+                switch command {
+                case .changeDirectory(let name):
+                    if name == ".." {
+                        currentDir = currentDir?.parent
+                    } else {
+                        let newDir = Directory(name: name, parent: currentDir)
+                        currentDir?.subDirectories.append(newDir)
+                        currentDir = newDir
+                        if startDirectory == nil {
+                            startDirectory = newDir
+                        }
+                    }
+                case .listFiles:
+                    continue
+                }
+            case .output(let output):
+                switch output {
+                case .file(let file):
+                    currentDir?.files.append(file)
+                case .directory:
+                    continue
+                }
+            }
+        }
+        
+        return startDirectory!
     }
 
-    static func sumOfSmallDirs(dir: Dir) -> Int {
+    private static func sumOfSmallDirectories(for directory: Directory) -> Int {
         var ownSize = 0
-        if dir.size > 100000 {
+        if directory.size > 100000 {
             ownSize = 0
         } else {
-            ownSize = dir.size
+            ownSize = directory.size
         }
 
-        let subDirSize = dir.subDirs.reduce(0) { partialResult, dir in
-            partialResult + sumOfSmallDirs(dir: dir)
+        let subDirectorySize = directory.subDirectories.reduce(0) { partialResult, subDirectory in
+            partialResult + sumOfSmallDirectories(for: subDirectory)
         }
 
-        return ownSize + subDirSize
+        return ownSize + subDirectorySize
     }
 
-    static func findDirsToDelete(minSizeToDelete: Int, dir: Dir) {
-        if dir.size < minSizeToDelete {
-            return
+    private static func findDirectoriesToDelete(for minSizeToDelete: Int, in directory: Directory) -> [Directory] {
+        if directory.size < minSizeToDelete {
+            return []
         } else {
-            dirsToDelete.append(dir)
-            dir.subDirs.forEach { dir in
-                findDirsToDelete(minSizeToDelete: minSizeToDelete, dir: dir)
+            var newFound = [directory]
+            newFound += directory.subDirectories.reduce([], { partialResult, subDirectory in
+                partialResult + findDirectoriesToDelete(for: minSizeToDelete, in: subDirectory)
+            })
+            return newFound
+        }
+    }
+    
+    private static func printFileTree(form directory: Directory, with depth: Int) {
+        let indentation = Array(repeating: "  ", count: depth).joined()
+        print(indentation + "- \(directory.name) (dir)")
+        if directory.subDirectories.isEmpty {
+            directory.files.forEach {
+                print(indentation + "  - \($0.name) (file, size:\($0.size))")
+            }
+        } else {
+            directory.subDirectories.forEach {
+                printFileTree(form: $0, with: (depth+1))
+            }
+            directory.files.forEach {
+                print(indentation + "  - \($0.name) (file, size:\($0.size))")
             }
         }
     }
