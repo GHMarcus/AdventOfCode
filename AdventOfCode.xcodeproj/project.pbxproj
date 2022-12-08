@@ -1577,8 +1577,8 @@
 		B3342BCF292E4D5A0037F123 /* Day_8 */ = {
 			isa = PBXGroup;
 			children = (
-				B3342BD0292E4D5A0037F123 /* Day_8_2022.swift */,
 				B3342BD1292E4D5A0037F123 /* Day_8_2022_Input */,
+				B3342BD0292E4D5A0037F123 /* Day_8_2022.swift */,
 			);
 			path = Day_8;
 			sourceTree = "<group>";
