@@ -59,4 +59,8 @@ struct Year_2022 {
         day_24 = Day_24_2022.self
         day_25 = Day_25_2022.self
     }
+
+    static func printLeaderboard() {
+        Input.getLeaderboard(for: .Year_2022)?.print()
+    }
 }

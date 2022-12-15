@@ -68,6 +68,8 @@
 		168B97CF257A76FC0047E969 /* Day_14_2020.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168B97BB257A76FC0047E969 /* Day_14_2020.swift */; };
 		16C0BE9B275B87F700E3B087 /* Collection+Transposed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C0BE9A275B87F700E3B087 /* Collection+Transposed.swift */; };
 		16C0BE9D2760F94B00E3B087 /* Array+Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C0BE9C2760F94B00E3B087 /* Array+Print.swift */; };
+		16CEF3812944BE9B000AA940 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEF3802944BE9B000AA940 /* Leaderboard.swift */; };
+		16CEF3842944F3C0000AA940 /* DynamicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEF3832944F3C0000AA940 /* DynamicKey.swift */; };
 		16DC2EC1276E1478005F5C56 /* Array+AllIndices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DC2EC0276E1478005F5C56 /* Array+AllIndices.swift */; };
 		B3342B8A292E4D280037F123 /* Day_3_2017.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3342B3F292E4D280037F123 /* Day_3_2017.swift */; };
 		B3342B8B292E4D280037F123 /* Day_4_2017.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3342B43292E4D280037F123 /* Day_4_2017.swift */; };
@@ -331,6 +333,9 @@
 		168B97BB257A76FC0047E969 /* Day_14_2020.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_14_2020.swift; sourceTree = "<group>"; };
 		16C0BE9A275B87F700E3B087 /* Collection+Transposed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Transposed.swift"; sourceTree = "<group>"; };
 		16C0BE9C2760F94B00E3B087 /* Array+Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Print.swift"; sourceTree = "<group>"; };
+		16CEF3802944BE9B000AA940 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		16CEF3822944F0E3000AA940 /* Leaderboard_2022_JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Leaderboard_2022_JSON; sourceTree = "<group>"; };
+		16CEF3832944F3C0000AA940 /* DynamicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicKey.swift; sourceTree = "<group>"; };
 		16DC2EC0276E1478005F5C56 /* Array+AllIndices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+AllIndices.swift"; sourceTree = "<group>"; };
 		B3342B3F292E4D280037F123 /* Day_3_2017.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_3_2017.swift; sourceTree = "<group>"; };
 		B3342B40292E4D280037F123 /* Day_3_2017_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_3_2017_Input; sourceTree = "<group>"; };
@@ -886,6 +891,8 @@
 				168B96D225763DA80047E969 /* ReadInput.swift */,
 				168B9716257A745C0047E969 /* Script.swift */,
 				168B96D125763DA80047E969 /* Solvable.swift */,
+				16CEF3832944F3C0000AA940 /* DynamicKey.swift */,
+				16CEF3802944BE9B000AA940 /* Leaderboard.swift */,
 				162197512581238D008DFBCE /* 2015 */,
 				B3694741274EA1A8007A6AD6 /* 2016 */,
 				B3342B3D292E4D280037F123 /* 2017 */,
@@ -1418,6 +1425,7 @@
 		B3342BA4292E4D5A0037F123 /* 2022 */ = {
 			isa = PBXGroup;
 			children = (
+				16CEF3822944F0E3000AA940 /* Leaderboard_2022_JSON */,
 				B3342BE4292E4D5A0037F123 /* Year2022.swift */,
 				B3342BD2292E4D5A0037F123 /* Day_1 */,
 				B3342BAE292E4D5A0037F123 /* Day_2 */,
@@ -2600,6 +2608,7 @@
 				B3342C09292E4D5A0037F123 /* Day_24_2022.swift in Sources */,
 				B3342B8F292E4D280037F123 /* Day_19_2017.swift in Sources */,
 				B369478E274EA1A8007A6AD6 /* Day_3_2016.swift in Sources */,
+				16CEF3812944BE9B000AA940 /* Leaderboard.swift in Sources */,
 				168B96D425763DA80047E969 /* ReadInput.swift in Sources */,
 				B36947A7274EA1A8007A6AD6 /* Day_23_2016.swift in Sources */,
 				B36947FF274EA215007A6AD6 /* Day_20_2021.swift in Sources */,
@@ -2672,6 +2681,7 @@
 				B3342C06292E4D5A0037F123 /* Year2022.swift in Sources */,
 				B369480D274EA216007A6AD6 /* Day_24_2021.swift in Sources */,
 				B36947F9274EA215007A6AD6 /* Day_19_2021.swift in Sources */,
+				16CEF3842944F3C0000AA940 /* DynamicKey.swift in Sources */,
 				B3342C08292E4D5A0037F123 /* Day_12_2022.swift in Sources */,
 				B3F29BC22891105900CC681F /* Array+CountedElements.swift in Sources */,
 				B369480C274EA216007A6AD6 /* Day_12_2021.swift in Sources */,
