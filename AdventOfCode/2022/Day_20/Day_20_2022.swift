@@ -41,8 +41,6 @@ enum Day_20_2022: Solvable {
         var zero: Number? = nil
         while true {
             let order = moved + 1
-            print(order)
-
             if order > input.count {
                 break
             }
@@ -55,10 +53,10 @@ enum Day_20_2022: Solvable {
             var moves: Int64 = 0
 
             if current.value < 0 {
-                moves = abs(current.value) % Int64(input.count)
+                moves = (current.value * -1) % Int64(input.count-1)
                 moves *= -1
             } else {
-                moves = current.value % Int64(input.count)
+                moves = current.value % Int64(input.count-1)
             }
 
             if current.value == 0 {
@@ -67,7 +65,7 @@ enum Day_20_2022: Solvable {
                 var destination = current
                 current.prev?.next = current.next
                 current.next?.prev = current.prev
-                for _ in 0...abs(moves) {
+                for _ in moves...0 {
                     destination = destination.prev!
                 }
                 current.next = destination.next
@@ -75,7 +73,7 @@ enum Day_20_2022: Solvable {
 
                 current.prev = destination
                 current.next?.prev = current
-            } else {
+            } else if moves > 0 {
                 var destination = current
                 current.prev?.next = current.next
                 current.next?.prev = current.prev
@@ -112,11 +110,6 @@ enum Day_20_2022: Solvable {
         }
         thirdValue = current.value
 
-        print("---------")
-        print(firstValue)
-        print(secondValue)
-        print(thirdValue)
-
         return "\(firstValue+secondValue+thirdValue)"
     }
 
@@ -133,23 +126,11 @@ enum Day_20_2022: Solvable {
             start.prev = next
         }
 
-        var str = ""
-        var current1 = start
-        for _ in 0..<input.count {
-            str += "\(current1.value) -> "
-            current1 = current1.next!
-        }
-        print(str)
-        print("*****************************************************")
-
-
-
         var zero: Number? = nil
-        for _ in 1...10 {
+        for round in 1...10 {
             var moved = 0
             while true {
                 let order = moved + 1
-                print(order)
 
                 if order > input.count {
                     break
@@ -163,10 +144,10 @@ enum Day_20_2022: Solvable {
                 var moves: Int64 = 0
 
                 if current.value < 0 {
-                    moves = abs(current.value) % Int64(input.count)
+                    moves = (current.value * -1) % Int64(input.count-1)
                     moves *= -1
                 } else {
-                    moves = current.value % Int64(input.count)
+                    moves = current.value % Int64(input.count-1)
                 }
 
                 if current.value == 0 {
@@ -175,7 +156,7 @@ enum Day_20_2022: Solvable {
                     var destination = current
                     current.prev?.next = current.next
                     current.next?.prev = current.prev
-                    for _ in 0...abs(moves) {
+                    for _ in moves...0 {
                         destination = destination.prev!
                     }
                     current.next = destination.next
@@ -183,7 +164,7 @@ enum Day_20_2022: Solvable {
 
                     current.prev = destination
                     current.next?.prev = current
-                } else {
+                } else if moves > 0 {
                     var destination = current
                     current.prev?.next = current.next
                     current.next?.prev = current.prev
@@ -199,18 +180,7 @@ enum Day_20_2022: Solvable {
 
                 moved = order
             }
-
-            var str = ""
-            var current = zero!
-            for _ in 0..<input.count {
-                str += "\(current.value) -> "
-                current = current.next!
-            }
-            print(str)
-            print("-----------------------------------------------------")
-
-
-
+            print("Round: \(round) finished")
         }
 
 
@@ -232,11 +202,6 @@ enum Day_20_2022: Solvable {
             current = current.next!
         }
         thirdValue = current.value
-
-        print("---------")
-        print(firstValue)
-        print(secondValue)
-        print(thirdValue)
 
         return "\(firstValue+secondValue+thirdValue)"
     }
