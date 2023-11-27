@@ -92,24 +92,19 @@ enum Day_24_2022: Solvable {
     }
     
     struct ValleyState: Equatable, Hashable {
-        let blizzards: Set<Pos>
+        let freeSpaces: Set<Pos>
         let time: Int
-        let max: (x: Int, y: Int)
         
         func filterNeighbours(_ neighbours: Set<Pos>) -> Set<Pos> {
-            let newNeighbours = neighbours
-                .filter {
-                    $0.x > 0 && $0.x < max.x && $0.y > 0 && $0.y < max.y
-                }
-            return newNeighbours.subtracting(blizzards)
+            neighbours.intersection(freeSpaces)
         }
         
         static func == (lhs: ValleyState, rhs: ValleyState) -> Bool {
-            lhs.blizzards == rhs.blizzards
+            lhs.freeSpaces == rhs.freeSpaces
         }
         
         func hash(into hasher: inout Hasher) {
-            hasher.combine(blizzards)
+            hasher.combine(freeSpaces)
         }
     }
     
@@ -193,7 +188,7 @@ enum Day_24_2022: Solvable {
             neighbours: { getNeighbours(state: $0) }
         )?.count ?? 0) - 1
         
-        print("\(way1) -> 👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻")
+        print("\(way1) -> Reached goal for the first time")
         
         let way2 = (resolveBFS(
             start: State(pos: endPos, time: 18, start: endPos, end: startPos),
@@ -201,7 +196,7 @@ enum Day_24_2022: Solvable {
             neighbours: { getNeighbours(state: $0) }
         )?.count ?? 0) - 1
         
-        print("\(way2) -> 👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻👻")
+        print("\(way2) -> Reached start again")
         
         let way3 = (resolveBFS(
             start: State(pos: startPos, time: (way1 + way2), start: startPos, end: endPos),
@@ -225,14 +220,30 @@ enum Day_24_2022: Solvable {
             return newBlizzards
         }
         
+        func getEmptySpaces(for blizzards: Set<Pos>) -> Set<Pos> {
+            var map: Set<Pos> = [
+                Pos(x: 1, y: 0),
+                Pos(x: maxX - 1, y: maxY)
+            ]
+            
+            for x in 1..<maxX {
+                for y in 1..<maxY {
+                    map.insert(Pos(x: x, y: y))
+                }
+            }
+            
+            return map.subtracting(blizzards)
+        }
+        
         var time = 0
-        var valley: Set<ValleyState> = [.init(blizzards: Set(initialBlizzards.map{ $0.pos }), time: time, max: (maxX, maxY))]
+        var valley: Set<ValleyState> = [.init(
+            freeSpaces: getEmptySpaces(for: Set(initialBlizzards.map{ $0.pos })), time: time)]
         var blizzards = initialBlizzards
         
         while true {
             time += 1
             blizzards = moveBlizzard(blizzards)
-            let newState = ValleyState(blizzards: Set(blizzards.map{ $0.pos }), time: time, max: (maxX, maxY))
+            let newState = ValleyState(freeSpaces: getEmptySpaces(for: Set(blizzards.map{ $0.pos })), time: time)
             
             if !valley.insert(newState).inserted {
                 break
@@ -240,37 +251,6 @@ enum Day_24_2022: Solvable {
         }
         
         return valley
-    }
-    
-    static func resolveBFS(
-        start: State,
-        goal: (State) -> Bool,
-        neighbours: (State) -> [State]
-    ) -> [State]? {
-        var queue: Queue<State> = .init()
-        queue.enqueue(start)
-        var cache: Set<State> = [start]
-
-        // For state s, way[s] is the state immediately preceding it
-        // on the cheapest path from start to state currently known.
-        var way: [State: State] = [:]
-
-        while let state = queue.dequeue() {
-            guard !goal(state) else {
-                return way.reconstructPath(to: state)
-            }
-
-            for neighbour in neighbours(state) {
-                guard !cache.contains(neighbour)
-                else { continue }
-                cache.insert(neighbour)
-                way[neighbour] = state
-
-                queue.enqueue(neighbour)
-            }
-        }
-
-        return nil
     }
     
     static func getNeighbours (state: State) -> [State] {
@@ -294,16 +274,3 @@ enum Day_24_2022: Solvable {
         }
     }
 }
-
-extension Dictionary where Key == Value {
-    func reconstructPath(to value: Value) -> [Value] {
-       var current = value
-       var totalPath = [current]
-       while let value = self[current] {
-           current = value
-           totalPath.append(value)
-       }
-       return totalPath.reversed()
-   }
-}
-
