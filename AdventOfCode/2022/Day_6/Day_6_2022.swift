@@ -21,7 +21,7 @@ enum Day_6_2022: Solvable {
 
     static func findMarker(length: Int, input: [Character]) -> Int {
         var i = 0
-        var length = length - 1
+        let length = length - 1
 
         while i+length < input.count {
             let marker = input[i...i+length]

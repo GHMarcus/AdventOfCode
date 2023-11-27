@@ -46,8 +46,8 @@ enum Day_21_2022: Solvable {
     static func solvePart1(input: [String]) -> String {
 
         let parsedInput = parseInput(input)
-        var monkeys: [Monkey] = parsedInput.0
-        var rootMonkey: Monkey = parsedInput.1
+        let monkeys: [Monkey] = parsedInput.0
+        let rootMonkey: Monkey = parsedInput.1
 
         let rootValue = combineMonkeyVars(for: rootMonkey, in: monkeys)
 
@@ -57,8 +57,8 @@ enum Day_21_2022: Solvable {
     static func solvePart2(input: [String]) -> String {
 
         let parsedInput = parseInput(input)
-        var monkeys: [Monkey] = parsedInput.0
-        var rootMonkey: Monkey = parsedInput.1
+        let monkeys: [Monkey] = parsedInput.0
+        let rootMonkey: Monkey = parsedInput.1
 
         let firstMonkey = monkeys.first { $0.name == rootMonkey.variables[0] }!
         let secondMonkey = monkeys.first { $0.name == rootMonkey.variables[1] }!

@@ -204,7 +204,7 @@ enum Day_20_2020: Solvable {
         borders = middles.filter{ tiles[$0]!.isBorder }
         middles = middles.filter{ !borders.contains($0) }
 
-        var edge = edges.removeFirst()
+        let edge = edges.removeFirst()
 //        let edge = 1951
 //        edges = edges.filter{ $0 != 1951 }
 
@@ -263,7 +263,7 @@ enum Day_20_2020: Solvable {
             var resulting: [String] = []
             for element in line {
                 let tileData = tiles[element]!.data
-                var pictureData = tileData.map{String($0)}
+                let pictureData = tileData.map{String($0)}
 //                pictureData = pictureData.map({ $0 + "  "})
                 if resulting.isEmpty {
                     resulting = Array(repeating: "", count: pictureData.count)
