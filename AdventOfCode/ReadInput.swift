@@ -63,6 +63,22 @@ enum Input {
         // .dropLast() for the last empty line in a file
         return stringContent.components(separatedBy: "\n").dropLast()
     }
+    
+    static func getStringCharactersArray(for day: Day, in year: Year) -> [[Character]] {
+        let url = URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .appendingPathComponent(year.rawValue)
+            .appendingPathComponent(day.rawValue)
+            .appendingPathComponent("\(day.rawValue)_\(year.rawValue)_Input")
+
+        guard let stringContent = try? String(contentsOf: url) else {
+            print("Could not read content this file here: \(url)")
+            return []
+        }
+
+        // .dropLast() for the last empty line in a file
+        return stringContent.components(separatedBy: "\n").dropLast().map { Array($0) }
+    }
 
     static func getJSONArray(for day: Day, in year: Year) -> [String] {
         let url = URL(fileURLWithPath: #file)

@@ -20,6 +20,10 @@
 //    static var day: Input.Day = .Day_\(day)
 //    static var year: Input.Year = .Year_\(year)
 //
+//    static func convert(input: [String]) -> [String] {
+//        input
+//    }
+//
 //    static func solvePart1(input: [String]) -> String {
 //        return "Add some Code here"
 //    }

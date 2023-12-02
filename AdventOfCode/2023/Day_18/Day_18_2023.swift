@@ -10,6 +10,10 @@
 enum Day_18_2023: Solvable {
     static var day: Input.Day = .Day_18
     static var year: Input.Year = .Year_2023
+    
+    static func convert(input: [String]) -> [String] {
+        input
+    }
 
     static func solvePart1(input: [String]) -> String {
         return "Add some Code here"
