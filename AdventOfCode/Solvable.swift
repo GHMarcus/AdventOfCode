@@ -11,12 +11,12 @@ protocol Solvable {
     static var day: Input.Day { get }
     static var year: Input.Year { get }
     associatedtype InputType
-    associatedtype MainStruct
+    associatedtype MainType
     static func input() -> InputType
-    static func convert(input: InputType) -> MainStruct
+    static func convert(input: InputType) -> MainType
     
-    static func solvePart1(input: MainStruct) -> String
-    static func solvePart2(input: MainStruct) -> String
+    static func solvePart1(input: MainType) -> String
+    static func solvePart2(input: MainType) -> String
 }
 
 extension Solvable {
