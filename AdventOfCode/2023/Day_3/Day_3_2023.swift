@@ -114,9 +114,7 @@ enum Day_3_2023: Solvable {
             }
             
             if partNeighbours.count == 2 {
-                sum += partNeighbours.reduce(into: 1, { partialResult, part in
-                    partialResult *= part.value
-                })
+                sum += partNeighbours.reduce(1) { $0 * $1.value }
             }
         }
         return "\(sum)"

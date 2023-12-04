@@ -80,20 +80,13 @@ enum Day_2_2023: Solvable {
                 $0.blue.max()! <= maxBlue
             }
         
-        var sum = 0
-        for game in possibleGames {
-            sum += game.id
-        }
+        let sum = possibleGames.reduce(0) { $0 + $1.id }
         
         return "\(sum)"
     }
     
     static func solvePart2(input: [Game]) -> String {
-        var sum = 0
-        
-        for game in input {
-            sum += game.power
-        }
+        let sum = input.reduce(0) { $0 + $1.power }
         
         return "\(sum)"
     }

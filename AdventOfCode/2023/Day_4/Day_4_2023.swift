@@ -42,10 +42,7 @@ enum Day_4_2023: Solvable {
     }
 
     static func solvePart1(input: [Card]) -> String {
-        var sum = 0
-        for card in input {
-            sum += card.value
-        }
+        let sum = input.reduce(0) { $0 + $1.value }
         return "\(sum)"
     }
 
@@ -66,9 +63,7 @@ enum Day_4_2023: Solvable {
             }
         }
         
-        let wonCards = cardsAndCopies.reduce(into: 0) { partialResult, win in
-            partialResult += win.value
-        }
+        let wonCards = cardsAndCopies.reduce(0) { $0 + $1.value }
         
         return "\(input.count + wonCards)"
     }
