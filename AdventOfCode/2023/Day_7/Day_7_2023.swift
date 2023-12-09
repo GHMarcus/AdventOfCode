@@ -187,11 +187,11 @@ enum Day_7_2023: Solvable {
         
         func getStrength(withJokers: Bool = false) -> Int {
             var value = Value.getValue(of: cards, haveJoker: withJokers).rawValue * 10000000000
-            value += cards[0].value                                               *   100000000
-            value += cards[1].value                                               *     1000000
-            value += cards[2].value                                               *       10000
-            value += cards[3].value                                               *         100
-            value += cards[4].value
+            value += (withJokers ? cards[0].valueWithJoker : cards[0].value)      *   100000000
+            value += (withJokers ? cards[1].valueWithJoker : cards[1].value)      *     1000000
+            value += (withJokers ? cards[2].valueWithJoker : cards[2].value)      *       10000
+            value += (withJokers ? cards[3].valueWithJoker : cards[3].value)      *         100
+            value += (withJokers ? cards[4].valueWithJoker : cards[4].value)
             return value
         }
     }
@@ -229,3 +229,5 @@ enum Day_7_2023: Solvable {
         return "\(sum)"
     }
 }
+
+// 250057090

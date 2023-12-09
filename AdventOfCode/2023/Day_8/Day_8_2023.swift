@@ -126,12 +126,8 @@ enum Day_8_2023: Solvable {
             }
         }
         
-        var currentLcm = allSteps.removeFirst()
+        let stepsLCM = allSteps.reduce(1) { lcm($0, $1) }
         
-        for step in allSteps {
-            currentLcm = lcm(currentLcm, step)
-        }
-        
-        return "\(currentLcm)"
+        return "\(stepsLCM)"
     }
 }
