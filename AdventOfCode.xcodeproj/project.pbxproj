@@ -179,6 +179,7 @@
 		B3694812274F9F0A007A6AD6 /* Array+Chunks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3694811274F9F0A007A6AD6 /* Array+Chunks.swift */; };
 		B37445D72B22EA08005638E3 /* GCD+LCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445D62B22EA08005638E3 /* GCD+LCM.swift */; };
 		B37445D92B22EC8E005638E3 /* FunctionZeros.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445D82B22EC8E005638E3 /* FunctionZeros.swift */; };
+		B37445DB2B25BFA8005638E3 /* OddOrEven.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445DA2B25BFA8005638E3 /* OddOrEven.swift */; };
 		B3BCA3072840C59400767110 /* Day_3_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2BC2840C59400767110 /* Day_3_2018.swift */; };
 		B3BCA3082840C59400767110 /* Day_4_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2C02840C59400767110 /* Day_4_2018.swift */; };
 		B3BCA3092840C59400767110 /* Day_5_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2C32840C59400767110 /* Day_5_2018.swift */; };
@@ -573,6 +574,7 @@
 		B3694811274F9F0A007A6AD6 /* Array+Chunks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunks.swift"; sourceTree = "<group>"; };
 		B37445D62B22EA08005638E3 /* GCD+LCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GCD+LCM.swift"; sourceTree = "<group>"; };
 		B37445D82B22EC8E005638E3 /* FunctionZeros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionZeros.swift; sourceTree = "<group>"; };
+		B37445DA2B25BFA8005638E3 /* OddOrEven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddOrEven.swift; sourceTree = "<group>"; };
 		B3BCA2BC2840C59400767110 /* Day_3_2018.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_3_2018.swift; sourceTree = "<group>"; };
 		B3BCA2BD2840C59400767110 /* Day_3_2018_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_3_2018_Input; sourceTree = "<group>"; };
 		B3BCA2BF2840C59400767110 /* Day_4_2018_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_4_2018_Input; sourceTree = "<group>"; };
@@ -2561,6 +2563,7 @@
 				B37445D82B22EC8E005638E3 /* FunctionZeros.swift */,
 				B37445D62B22EA08005638E3 /* GCD+LCM.swift */,
 				B3DBB9912B1223C10091E467 /* Queue.swift */,
+				B37445DA2B25BFA8005638E3 /* OddOrEven.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2664,8 +2667,8 @@
 		B3DBB9AD2B147D5B0091E467 /* Day_10 */ = {
 			isa = PBXGroup;
 			children = (
-				B3DBB9AE2B147D5B0091E467 /* Day_10_2023.swift */,
 				B3DBB9AF2B147D5B0091E467 /* Day_10_2023_Input */,
+				B3DBB9AE2B147D5B0091E467 /* Day_10_2023.swift */,
 			);
 			path = Day_10;
 			sourceTree = "<group>";
@@ -3063,6 +3066,7 @@
 				B369480C274EA216007A6AD6 /* Day_12_2021.swift in Sources */,
 				B3694807274EA216007A6AD6 /* Day_22_2021.swift in Sources */,
 				B37445D72B22EA08005638E3 /* GCD+LCM.swift in Sources */,
+				B37445DB2B25BFA8005638E3 /* OddOrEven.swift in Sources */,
 				B3342B95292E4D290037F123 /* Day_20_2017.swift in Sources */,
 				162197AF2581238D008DFBCE /* Day_6_2015.swift in Sources */,
 				B3BCA3142840C59400767110 /* Day_9_2018.swift in Sources */,
