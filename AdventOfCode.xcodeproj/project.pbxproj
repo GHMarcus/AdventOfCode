@@ -180,6 +180,7 @@
 		B37445D72B22EA08005638E3 /* GCD+LCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445D62B22EA08005638E3 /* GCD+LCM.swift */; };
 		B37445D92B22EC8E005638E3 /* FunctionZeros.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445D82B22EC8E005638E3 /* FunctionZeros.swift */; };
 		B37445DB2B25BFA8005638E3 /* OddOrEven.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445DA2B25BFA8005638E3 /* OddOrEven.swift */; };
+		B37445DD2B26FC28005638E3 /* Array+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445DC2B26FC28005638E3 /* Array+Rotate.swift */; };
 		B3BCA3072840C59400767110 /* Day_3_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2BC2840C59400767110 /* Day_3_2018.swift */; };
 		B3BCA3082840C59400767110 /* Day_4_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2C02840C59400767110 /* Day_4_2018.swift */; };
 		B3BCA3092840C59400767110 /* Day_5_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2C32840C59400767110 /* Day_5_2018.swift */; };
@@ -575,6 +576,7 @@
 		B37445D62B22EA08005638E3 /* GCD+LCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GCD+LCM.swift"; sourceTree = "<group>"; };
 		B37445D82B22EC8E005638E3 /* FunctionZeros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionZeros.swift; sourceTree = "<group>"; };
 		B37445DA2B25BFA8005638E3 /* OddOrEven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddOrEven.swift; sourceTree = "<group>"; };
+		B37445DC2B26FC28005638E3 /* Array+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Rotate.swift"; sourceTree = "<group>"; };
 		B3BCA2BC2840C59400767110 /* Day_3_2018.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_3_2018.swift; sourceTree = "<group>"; };
 		B3BCA2BD2840C59400767110 /* Day_3_2018_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_3_2018_Input; sourceTree = "<group>"; };
 		B3BCA2BF2840C59400767110 /* Day_4_2018_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_4_2018_Input; sourceTree = "<group>"; };
@@ -1778,6 +1780,7 @@
 				B3D06AD42B1DA9E1002D4B0A /* Int+Pow.swift */,
 				B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */,
 				B36947352746C459007A6AD6 /* StringExtensions.swift */,
+				B37445DC2B26FC28005638E3 /* Array+Rotate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2676,8 +2679,8 @@
 		B3DBB9B02B147D5B0091E467 /* Day_11 */ = {
 			isa = PBXGroup;
 			children = (
-				B3DBB9B12B147D5B0091E467 /* Day_11_2023.swift */,
 				B3DBB9B22B147D5B0091E467 /* Day_11_2023_Input */,
+				B3DBB9B12B147D5B0091E467 /* Day_11_2023.swift */,
 			);
 			path = Day_11;
 			sourceTree = "<group>";
@@ -2959,6 +2962,7 @@
 				B3342B99292E4D290037F123 /* Day_8_2017.swift in Sources */,
 				168B97C3257A76FC0047E969 /* Day_23_2020.swift in Sources */,
 				B3342BA3292E4D290037F123 /* Day_23_2017.swift in Sources */,
+				B37445DD2B26FC28005638E3 /* Array+Rotate.swift in Sources */,
 				B36947362746C459007A6AD6 /* StringExtensions.swift in Sources */,
 				B3694803274EA216007A6AD6 /* Day_9_2021.swift in Sources */,
 				B3694806274EA216007A6AD6 /* Day_6_2021.swift in Sources */,
