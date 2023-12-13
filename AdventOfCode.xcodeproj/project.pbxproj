@@ -1774,13 +1774,13 @@
 				B3F29BC12891105900CC681F /* Array+CountedElements.swift */,
 				B369473727478711007A6AD6 /* Array+Permutations.swift */,
 				16C0BE9C2760F94B00E3B087 /* Array+Print.swift */,
+				B37445DC2B26FC28005638E3 /* Array+Rotate.swift */,
 				16275114293DCA2200FF0986 /* ClosedRange+IsSubRange.swift */,
 				16275112293DC58200FF0986 /* Collection+Get.swift */,
 				16C0BE9A275B87F700E3B087 /* Collection+Transposed.swift */,
 				B3D06AD42B1DA9E1002D4B0A /* Int+Pow.swift */,
 				B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */,
 				B36947352746C459007A6AD6 /* StringExtensions.swift */,
-				B37445DC2B26FC28005638E3 /* Array+Rotate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
