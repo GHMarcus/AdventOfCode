@@ -181,6 +181,7 @@
 		B37445D92B22EC8E005638E3 /* FunctionZeros.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445D82B22EC8E005638E3 /* FunctionZeros.swift */; };
 		B37445DB2B25BFA8005638E3 /* OddOrEven.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445DA2B25BFA8005638E3 /* OddOrEven.swift */; };
 		B37445DD2B26FC28005638E3 /* Array+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37445DC2B26FC28005638E3 /* Array+Rotate.swift */; };
+		B37767662B3060460080043B /* PolygonArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37767652B3060460080043B /* PolygonArea.swift */; };
 		B3BCA3072840C59400767110 /* Day_3_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2BC2840C59400767110 /* Day_3_2018.swift */; };
 		B3BCA3082840C59400767110 /* Day_4_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2C02840C59400767110 /* Day_4_2018.swift */; };
 		B3BCA3092840C59400767110 /* Day_5_2018.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BCA2C32840C59400767110 /* Day_5_2018.swift */; };
@@ -577,6 +578,7 @@
 		B37445D82B22EC8E005638E3 /* FunctionZeros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionZeros.swift; sourceTree = "<group>"; };
 		B37445DA2B25BFA8005638E3 /* OddOrEven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddOrEven.swift; sourceTree = "<group>"; };
 		B37445DC2B26FC28005638E3 /* Array+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Rotate.swift"; sourceTree = "<group>"; };
+		B37767652B3060460080043B /* PolygonArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonArea.swift; sourceTree = "<group>"; };
 		B3BCA2BC2840C59400767110 /* Day_3_2018.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day_3_2018.swift; sourceTree = "<group>"; };
 		B3BCA2BD2840C59400767110 /* Day_3_2018_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_3_2018_Input; sourceTree = "<group>"; };
 		B3BCA2BF2840C59400767110 /* Day_4_2018_Input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Day_4_2018_Input; sourceTree = "<group>"; };
@@ -2567,6 +2569,7 @@
 				B37445D62B22EA08005638E3 /* GCD+LCM.swift */,
 				B3DBB9912B1223C10091E467 /* Queue.swift */,
 				B37445DA2B25BFA8005638E3 /* OddOrEven.swift */,
+				B37767652B3060460080043B /* PolygonArea.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2706,8 +2709,8 @@
 		B3DBB9B92B147D5B0091E467 /* Day_18 */ = {
 			isa = PBXGroup;
 			children = (
-				B3DBB9BA2B147D5B0091E467 /* Day_18_2023.swift */,
 				B3DBB9BB2B147D5B0091E467 /* Day_18_2023_Input */,
+				B3DBB9BA2B147D5B0091E467 /* Day_18_2023.swift */,
 			);
 			path = Day_18;
 			sourceTree = "<group>";
@@ -2950,6 +2953,7 @@
 				B3BCA3082840C59400767110 /* Day_4_2018.swift in Sources */,
 				B3342B9B292E4D290037F123 /* Day_6_2017.swift in Sources */,
 				B3BCA31B2840C59400767110 /* Day_13_2018.swift in Sources */,
+				B37767662B3060460080043B /* PolygonArea.swift in Sources */,
 				B369479D274EA1A8007A6AD6 /* Day_8_2016.swift in Sources */,
 				B3694802274EA215007A6AD6 /* Day_7_2021.swift in Sources */,
 				B3DBB9F02B147D5B0091E467 /* Day_7_2023.swift in Sources */,
