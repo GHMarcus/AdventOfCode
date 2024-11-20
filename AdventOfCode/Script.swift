@@ -3,7 +3,7 @@
 //import Foundation
 //
 //let currentDirectory = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-//let year = "2023"
+//let year = "2024"
 //for day in 1...25 {
 //    let templateString =
 //"""
