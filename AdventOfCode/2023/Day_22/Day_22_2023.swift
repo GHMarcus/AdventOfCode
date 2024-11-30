@@ -192,4 +192,3 @@ enum Day_22_2023: Solvable {
         return fallingBricks
     }
 }
-
