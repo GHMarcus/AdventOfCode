@@ -1344,8 +1344,8 @@
 		18F005DE2CEE335200F4F57E /* Day_2 */ = {
 			isa = PBXGroup;
 			children = (
-				18F005DC2CEE335200F4F57E /* Day_2_2024.swift */,
 				18F005DD2CEE335200F4F57E /* Day_2_2024_Input */,
+				18F005DC2CEE335200F4F57E /* Day_2_2024.swift */,
 			);
 			path = Day_2;
 			sourceTree = "<group>";
