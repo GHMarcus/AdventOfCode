@@ -87,6 +87,18 @@ enum Day_24_2023: Solvable {
         return intersections
     }
     
+    // Given equations:
+    // x(t) = x0 + vx * t
+    // y(t) = y0 + vy * t
+    // Now when you have two stones that must have the same position on different times you can say
+    // x01 + vx1 * t1 = x02 + vx2 * t2
+    // y01 + vy1 * t1 = y02 + vy2 * t2
+    // The two unknown here are t1 and t2, for soling it you have the given two equations (`calculateT1` and `calculateT2`)
+    // After find t1 and t2 its simple logic:
+    // - If both are positive: The meet in the future (which we want to know)
+    // - If one of them is negative they had meet in the past
+    // - If there is no solution (inf) they never meet
+
     static func calculateT2(s1: HailStone, s2: HailStone) -> Double {
         (s1.y0 - s2.y0 + (((s2.x0 - s1.x0)/s1.vx) * s1.vy)) / (s2.vy - ((s2.vx * s1.vy)/s1.vx))
     }
