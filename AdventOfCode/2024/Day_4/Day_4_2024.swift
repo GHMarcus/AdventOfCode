@@ -10,6 +10,7 @@
 enum Day_4_2024: Solvable {
     static var day: Input.Day = .Day_4
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = [[Character]]
 
     static func getXMASPositonsFor(x: Int, y: Int, maxX: Int, maxY: Int) -> [[(x: Int, y: Int)]] {
         [
@@ -46,7 +47,7 @@ enum Day_4_2024: Solvable {
         }
     }
     
-    static func convert(input: [String]) -> [[Character]] {
+    static func convert(input: [String]) -> ConvertedInput {
         var map: [[Character]] = []
         for line in input {
             map.append(Array(line))
@@ -54,7 +55,7 @@ enum Day_4_2024: Solvable {
         return map
     }
 
-    static func solvePart1(input: [[Character]]) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         var wordsFound = 0
         
         for y in 0..<input.count {
@@ -77,7 +78,7 @@ enum Day_4_2024: Solvable {
         return "\(wordsFound)"
     }
 
-    static func solvePart2(input: [[Character]]) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         var xMasFounds = 0
         
         for y in 0..<input.count {

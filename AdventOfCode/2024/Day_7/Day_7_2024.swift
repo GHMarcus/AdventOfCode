@@ -12,6 +12,7 @@
 enum Day_7_2024: Solvable {
     static var day: Input.Day = .Day_7
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = [Equation]
 
     enum Operator: String {
         case add = "+"
@@ -86,7 +87,7 @@ enum Day_7_2024: Solvable {
         }
     }
     
-    static func convert(input: [String]) -> [Equation] {
+    static func convert(input: [String]) -> ConvertedInput {
         var equations: [Equation] = []
         for line in input {
             let cmp = line.components(separatedBy: ": ")
@@ -98,7 +99,7 @@ enum Day_7_2024: Solvable {
         return equations
     }
 
-    static func solvePart1(input: [Equation]) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         var sum = 0
         
         for equation in input {
@@ -113,7 +114,7 @@ enum Day_7_2024: Solvable {
         return "\(sum)"
     }
 
-    static func solvePart2(input: [Equation]) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         var sum = 0
         
         for equation in input {

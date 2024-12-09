@@ -11,12 +11,12 @@
 enum Day_9_2024: Solvable {
     static var day: Input.Day = .Day_9
     static var year: Input.Year = .Year_2024
-    typealias InputReturnType = [Int?]
+    typealias ConvertedInput = [Int?]
     
-    static func convert(input: [String]) -> InputReturnType {
+    static func convert(input: [String]) -> ConvertedInput {
         var isSpace = false
         var id = 0
-        var diskMap: InputReturnType = []
+        var diskMap: ConvertedInput = []
         for c in Array(input[0]) {
             if isSpace {
                 diskMap.append(contentsOf: Array(repeating: nil, count: Int(String(c))!))
@@ -31,7 +31,7 @@ enum Day_9_2024: Solvable {
         return diskMap
     }
 
-    static func solvePart1(input: InputReturnType) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         var diskMap = input
         
         var lastBlockIndex: Int = diskMap.lastIndex { $0 != nil }!
@@ -57,7 +57,7 @@ enum Day_9_2024: Solvable {
         return "\(checkSum)"
     }
 
-    static func solvePart2(input: InputReturnType) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         var diskMap = input
         
         var spacesLength = getSpaceLengths(for: diskMap, to: diskMap.count-1)

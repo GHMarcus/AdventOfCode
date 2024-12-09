@@ -32,8 +32,9 @@ struct Rule {
 enum Day_5_2024: Solvable {
     static var day: Input.Day = .Day_5
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = (rules: [Rule], updates: [[Int]])
 
-    static func convert(input: [String]) -> (rules: [Rule], updates: [[Int]]) {
+    static func convert(input: [String]) -> ConvertedInput {
         var rules: [Rule] = []
         var updates: [[Int]] = []
         
@@ -57,13 +58,13 @@ enum Day_5_2024: Solvable {
         return (rules, updates)
     }
 
-    static func solvePart1(input: (rules: [Rule], updates: [[Int]])) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         let correctUpdates = getFilteredUpdates(for: input.updates, with: input.rules)
         
         return "\(sumOfMiddleValues(for: correctUpdates))"
     }
 
-    static func solvePart2(input: (rules: [Rule], updates: [[Int]])) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         let inCorrectUpdates = getFilteredUpdates(for: input.updates, with: input.rules, wantIncorrectOnes: true)
         
         var correctedUpdates: [[Int]] = []

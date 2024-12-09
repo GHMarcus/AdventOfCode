@@ -10,16 +10,17 @@
 enum Day_15_2024: Solvable {
     static var day: Input.Day = .Day_15
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = [String]
 
-    static func convert(input: [String]) -> [String] {
+    static func convert(input: [String]) -> ConvertedInput {
         input
     }
 
-    static func solvePart1(input: [String]) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         return "Add some Code here"
     }
 
-    static func solvePart2(input: [String]) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         return "Add some Code here"
     }
 }

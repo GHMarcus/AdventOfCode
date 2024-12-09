@@ -10,13 +10,12 @@
 enum Day_8_2024: Solvable {
     static var day: Input.Day = .Day_8
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = (antennas: [Character: [Pos]], maxX: Int, maxY: Int)
 
     struct Pos: Hashable {
         let x: Int
         let y: Int
     }
-    
-    typealias ConvertedInput = (antennas: [Character: [Pos]], maxX: Int, maxY: Int)
     
     enum Direction {
         case plus, minus

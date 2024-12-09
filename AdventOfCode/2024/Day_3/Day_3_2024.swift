@@ -12,22 +12,23 @@ import Foundation
 enum Day_3_2024: Solvable {
     static var day: Input.Day = .Day_3
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = String
     
     enum Statement {
         case mul, `do`, dont
     }
 
-    static func convert(input: [String]) -> String {
+    static func convert(input: [String]) -> ConvertedInput {
         input.joined()
     }
 
-    static func solvePart1(input: String) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         let muls = input.matches(for: "mul\\([0-9]{1,3},[0-9]{1,3}\\)")
         let sum = muls.reduce(0){ $0 + getValue(for: $1) }
         return "\(sum)"
     }
 
-    static func solvePart2(input: String) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         let muls = input.ranges(for: "mul\\([0-9]{1,3},[0-9]{1,3}\\)")
         let dos = input.ranges(for: "do\\(\\)")
         let donts = input.ranges(for: "don't\\(\\)")

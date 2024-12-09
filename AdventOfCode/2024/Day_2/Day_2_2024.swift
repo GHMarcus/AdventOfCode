@@ -10,8 +10,9 @@
 enum Day_2_2024: Solvable {
     static var day: Input.Day = .Day_2
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = [[Int]]
 
-    static func convert(input: [String]) -> [[Int]] {
+    static func convert(input: [String]) -> ConvertedInput {
         var reports: [[Int]] = []
         for line in input {
             let levels = line.components(separatedBy: " ").map { Int($0)! }
@@ -35,7 +36,7 @@ enum Day_2_2024: Solvable {
         return isSafe(diffs)
     }
     
-    static func solvePart1(input: [[Int]]) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         var safeCount = 0
         for levels in input {
             if determineSafetyness(for: levels) {
@@ -45,7 +46,7 @@ enum Day_2_2024: Solvable {
         return "\(safeCount)"
     }
 
-    static func solvePart2(input: [[Int]]) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         var safeCountWithoutRemoving = 0
         var safeCountAfterRemoving = 0
         

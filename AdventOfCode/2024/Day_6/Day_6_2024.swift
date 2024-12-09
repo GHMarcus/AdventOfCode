@@ -34,8 +34,9 @@ struct Position: Hashable {
 enum Day_6_2024: Solvable {
     static var day: Input.Day = .Day_6
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = (map: [[Character]], start: Position)
 
-    static func convert(input: [String]) -> (map: [[Character]], start: Position) {
+    static func convert(input: [String]) -> ConvertedInput {
         var map = [[Character]]()
         var start: Position = Position(x: 0, y: 0, dir: .up)
         for (index, line) in input.enumerated() {
@@ -52,7 +53,7 @@ enum Day_6_2024: Solvable {
         return (map: map, start: start)
     }
 
-    static func solvePart1(input: (map: [[Character]], start: Position)) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         
         var guardPosition: Position = input.start
         var visitedPositions: Set<Position> = [guardPosition]
@@ -86,7 +87,7 @@ enum Day_6_2024: Solvable {
         return "\(visitedPositions.count)"
     }
 
-    static func solvePart2(input: (map: [[Character]], start: Position)) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         
         var blockingPositions: Set<Position> = []
         

@@ -10,8 +10,9 @@
 enum Day_1_2024: Solvable {
     static var day: Input.Day = .Day_1
     static var year: Input.Year = .Year_2024
+    typealias ConvertedInput = (left: [Int], right: [Int])
 
-    static func convert(input: [String]) -> (left: [Int], right: [Int]) {
+    static func convert(input: [String]) -> ConvertedInput {
         var leftList: [Int] = []
         var rightList: [Int] = []
         
@@ -24,7 +25,7 @@ enum Day_1_2024: Solvable {
         return (left: leftList, right: rightList)
     }
 
-    static func solvePart1(input: (left: [Int], right: [Int])) -> String {
+    static func solvePart1(input: ConvertedInput) -> String {
         
         let sortedLeft = input.left.sorted()
         let sortedRight = input.right.sorted()
@@ -38,7 +39,7 @@ enum Day_1_2024: Solvable {
         return "\(sumOfDistances)"
     }
 
-    static func solvePart2(input: (left: [Int], right: [Int])) -> String {
+    static func solvePart2(input: ConvertedInput) -> String {
         
         let countedRightList = input.right.countedElements
         var similarityScore: Int = 0
