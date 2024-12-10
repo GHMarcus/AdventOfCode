@@ -87,6 +87,7 @@
 		183C86562D0709FC00463BF3 /* Day_14_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86252D0709FC00463BF3 /* Day_14_2024.swift */; };
 		183C86572D0709FC00463BF3 /* Day_13_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86222D0709FC00463BF3 /* Day_13_2024.swift */; };
 		183C86582D0709FC00463BF3 /* Day_19_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86342D0709FC00463BF3 /* Day_19_2024.swift */; };
+		183C865A2D08973100463BF3 /* VectorOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86592D08973100463BF3 /* VectorOperations.swift */; };
 		18F006282CEE335200F4F57E /* Day_7_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005EB2CEE335200F4F57E /* Day_7_2024.swift */; };
 		18F0062A2CEE335200F4F57E /* Day_5_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005E52CEE335200F4F57E /* Day_5_2024.swift */; };
 		18F0062D2CEE335200F4F57E /* Day_2_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005DC2CEE335200F4F57E /* Day_2_2024.swift */; };
@@ -428,6 +429,7 @@
 		183C86442D0709FC00463BF3 /* Day_24_2024_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_24_2024_Input; sourceTree = "<group>"; };
 		183C86462D0709FC00463BF3 /* Day_25_2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_25_2024.swift; sourceTree = "<group>"; };
 		183C86472D0709FC00463BF3 /* Day_25_2024_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_25_2024_Input; sourceTree = "<group>"; };
+		183C86592D08973100463BF3 /* VectorOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorOperations.swift; sourceTree = "<group>"; };
 		18F005D92CEE335200F4F57E /* Day_1_2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_1_2024.swift; sourceTree = "<group>"; };
 		18F005DA2CEE335200F4F57E /* Day_1_2024_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_1_2024_Input; sourceTree = "<group>"; };
 		18F005DC2CEE335200F4F57E /* Day_2_2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_2_2024.swift; sourceTree = "<group>"; };
@@ -1346,8 +1348,8 @@
 		183C861E2D0709FC00463BF3 /* Day_11 */ = {
 			isa = PBXGroup;
 			children = (
-				183C861C2D0709FC00463BF3 /* Day_11_2024.swift */,
 				183C861D2D0709FC00463BF3 /* Day_11_2024_Input */,
+				183C861C2D0709FC00463BF3 /* Day_11_2024.swift */,
 			);
 			path = Day_11;
 			sourceTree = "<group>";
@@ -2909,9 +2911,10 @@
 				B3DBB9952B1477050091E467 /* BFS.swift */,
 				B37445D82B22EC8E005638E3 /* FunctionZeros.swift */,
 				B37445D62B22EA08005638E3 /* GCD+LCM.swift */,
-				B3DBB9912B1223C10091E467 /* Queue.swift */,
 				B37445DA2B25BFA8005638E3 /* OddOrEven.swift */,
 				B37767652B3060460080043B /* PolygonArea.swift */,
+				B3DBB9912B1223C10091E467 /* Queue.swift */,
+				183C86592D08973100463BF3 /* VectorOperations.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3300,6 +3303,7 @@
 				B369479D274EA1A8007A6AD6 /* Day_8_2016.swift in Sources */,
 				B3694802274EA215007A6AD6 /* Day_7_2021.swift in Sources */,
 				B3DBB9F02B147D5B0091E467 /* Day_7_2023.swift in Sources */,
+				183C865A2D08973100463BF3 /* VectorOperations.swift in Sources */,
 				B36947F6274EA215007A6AD6 /* Day_4_2021.swift in Sources */,
 				162197A52581238D008DFBCE /* Day_17_2015.swift in Sources */,
 				B3DBB9F22B147D5B0091E467 /* Year2023.swift in Sources */,
