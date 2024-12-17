@@ -90,6 +90,9 @@
 		183C865A2D08973100463BF3 /* VectorOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86592D08973100463BF3 /* VectorOperations.swift */; };
 		183C865C2D0C578400463BF3 /* Double+Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C865B2D0C577D00463BF3 /* Double+Round.swift */; };
 		183C865E2D0C579400463BF3 /* FloatingPoint+IsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C865D2D0C578C00463BF3 /* FloatingPoint+IsInt.swift */; };
+		183C86612D10C77F00463BF3 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86602D10C77F00463BF3 /* AStar.swift */; };
+		183C86632D1222AF00463BF3 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86622D1222A500463BF3 /* PriorityQueue.swift */; };
+		183C86652D12231800463BF3 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86642D12231800463BF3 /* Heap.swift */; };
 		18F006282CEE335200F4F57E /* Day_7_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005EB2CEE335200F4F57E /* Day_7_2024.swift */; };
 		18F0062A2CEE335200F4F57E /* Day_5_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005E52CEE335200F4F57E /* Day_5_2024.swift */; };
 		18F0062D2CEE335200F4F57E /* Day_2_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005DC2CEE335200F4F57E /* Day_2_2024.swift */; };
@@ -434,6 +437,9 @@
 		183C86592D08973100463BF3 /* VectorOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorOperations.swift; sourceTree = "<group>"; };
 		183C865B2D0C577D00463BF3 /* Double+Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Round.swift"; sourceTree = "<group>"; };
 		183C865D2D0C578C00463BF3 /* FloatingPoint+IsInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+IsInt.swift"; sourceTree = "<group>"; };
+		183C86602D10C77F00463BF3 /* AStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
+		183C86622D1222A500463BF3 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
+		183C86642D12231800463BF3 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		18F005D92CEE335200F4F57E /* Day_1_2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_1_2024.swift; sourceTree = "<group>"; };
 		18F005DA2CEE335200F4F57E /* Day_1_2024_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_1_2024_Input; sourceTree = "<group>"; };
 		18F005DC2CEE335200F4F57E /* Day_2_2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_2_2024.swift; sourceTree = "<group>"; };
@@ -1397,8 +1403,8 @@
 		183C862D2D0709FC00463BF3 /* Day_16 */ = {
 			isa = PBXGroup;
 			children = (
-				183C862B2D0709FC00463BF3 /* Day_16_2024.swift */,
 				183C862C2D0709FC00463BF3 /* Day_16_2024_Input */,
+				183C862B2D0709FC00463BF3 /* Day_16_2024.swift */,
 			);
 			path = Day_16;
 			sourceTree = "<group>";
@@ -2914,11 +2920,14 @@
 		B3DBB9902B12238F0091E467 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				183C86602D10C77F00463BF3 /* AStar.swift */,
 				B3DBB9952B1477050091E467 /* BFS.swift */,
 				B37445D82B22EC8E005638E3 /* FunctionZeros.swift */,
 				B37445D62B22EA08005638E3 /* GCD+LCM.swift */,
+				183C86642D12231800463BF3 /* Heap.swift */,
 				B37445DA2B25BFA8005638E3 /* OddOrEven.swift */,
 				B37767652B3060460080043B /* PolygonArea.swift */,
+				183C86622D1222A500463BF3 /* PriorityQueue.swift */,
 				B3DBB9912B1223C10091E467 /* Queue.swift */,
 				183C86592D08973100463BF3 /* VectorOperations.swift */,
 			);
@@ -3388,7 +3397,9 @@
 				B3DBB9E52B147D5B0091E467 /* Day_4_2023.swift in Sources */,
 				162197B72581238D008DFBCE /* Day_23_2015.swift in Sources */,
 				B3DBB9EC2B147D5B0091E467 /* Day_11_2023.swift in Sources */,
+				183C86612D10C77F00463BF3 /* AStar.swift in Sources */,
 				B369479A274EA1A8007A6AD6 /* Day_18_2016.swift in Sources */,
+				183C86632D1222AF00463BF3 /* PriorityQueue.swift in Sources */,
 				B369480B274EA216007A6AD6 /* Day_15_2021.swift in Sources */,
 				B3BCA3172840C59400767110 /* Day_6_2018.swift in Sources */,
 				168B96D325763DA80047E969 /* Solvable.swift in Sources */,
@@ -3475,6 +3486,7 @@
 				B3694809274EA216007A6AD6 /* Day_13_2021.swift in Sources */,
 				B3342B90292E4D280037F123 /* Day_21_2017.swift in Sources */,
 				183C86492D0709FC00463BF3 /* Day_16_2024.swift in Sources */,
+				183C86652D12231800463BF3 /* Heap.swift in Sources */,
 				183C864A2D0709FC00463BF3 /* Day_25_2024.swift in Sources */,
 				183C864B2D0709FC00463BF3 /* Day_15_2024.swift in Sources */,
 				183C864C2D0709FC00463BF3 /* Day_20_2024.swift in Sources */,
