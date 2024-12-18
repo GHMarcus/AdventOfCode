@@ -35,15 +35,3 @@ func resolveBFS<State: Hashable>(
 
     return nil
 }
-
-extension Dictionary where Key == Value {
-    func reconstructPath(to value: Value) -> [Value] {
-       var current = value
-       var totalPath = [current]
-       while let value = self[current] {
-           current = value
-           totalPath.append(value)
-       }
-       return totalPath.reversed()
-   }
-}
