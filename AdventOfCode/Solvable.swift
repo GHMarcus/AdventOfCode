@@ -15,16 +15,24 @@ protocol Solvable {
     static func input() -> InputType
     static func convert(input: InputType) -> MainType
     
-    static func solvePart1(input: MainType) -> String
-    static func solvePart2(input: MainType) -> String
+    static func solvePart1(input: MainType) async -> String
+    static func solvePart2(input: MainType) async -> String
 }
 
 extension Solvable {
-    static func solve() {
+    static func solve() async -> TimeInterval {
+        let startTime = CFAbsoluteTimeGetCurrent()
         print("********** \(day.rawValue) Year \(year.rawValue) **********")
-        print("Solution for Part 1: \(solvePart1(input: convert(input: input())))")
-        print("Solution for Part 2: \(solvePart2(input: convert(input: input())))")
+        
+        let part_1_result = await solvePart1(input: convert(input: input()))
+        print("Solution for Part 1: \(part_1_result)")
+        
+        let part_2_result = await solvePart2(input: convert(input: input()))
+        print("Solution for Part 2: \(part_2_result)")
+        
         print("*************************************")
+        
+        return CFAbsoluteTimeGetCurrent() - startTime
     }
 
     static func input() -> [String] {

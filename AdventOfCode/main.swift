@@ -6,11 +6,14 @@
 //
 
 import Foundation
+        
+Task {
+    let diffTime = await Year_2024().day_25.solve()
+    print("Took \(diffTime) seconds")
+}
 
-let startTime = CFAbsoluteTimeGetCurrent()
-Year_2024().day_20.solve()
-let diffTime = CFAbsoluteTimeGetCurrent() - startTime
-print("Took \(diffTime) seconds")
+// RunLoop am Leben halten, bis Task fertig ist
+RunLoop.main.run()
 
 
 
