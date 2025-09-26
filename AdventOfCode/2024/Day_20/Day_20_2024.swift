@@ -112,40 +112,48 @@ enum Day_20_2024: Solvable {
         return (finalTrack ?? [], walls, map[0].count, map.count)
     }
 
-    static func solvePart1(input: ConvertedInput) async -> String {
-        let cheatsByTime = await calculateCheatsByTime(
-            for: input.track,
-            duration: 2,
-            maxX: input.maxX,
-            maxY: input.maxX
-        )
-
-        var bestCheats = 0
-        cheatsByTime.forEach {
-            if $0.key >= 100 {
-                bestCheats += $0.value
+    static func solvePart1(input: ConvertedInput) -> String {
+        Task {
+            let cheatsByTime = await calculateCheatsByTime(
+                for: input.track,
+                duration: 2,
+                maxX: input.maxX,
+                maxY: input.maxX
+            )
+            
+            var bestCheats = 0
+            cheatsByTime.forEach {
+                if $0.key >= 100 {
+                    bestCheats += $0.value
+                }
             }
+            
+            print(bestCheats)
         }
 
-        return "\(bestCheats)"
+        return "Wait for async print of the best cheats"
     }
 
-    static func solvePart2(input: ConvertedInput) async -> String {
-        let cheatsByTime = await calculateCheatsByTime(
-            for: input.track,
-            duration: 20,
-            maxX: input.maxX,
-            maxY: input.maxX
-        )
-        
-        var bestCheats = 0
-        cheatsByTime.forEach {
-            if $0.key >= 100 {
-                bestCheats += $0.value
+    static func solvePart2(input: ConvertedInput) -> String {
+        Task { @MainActor in
+            let cheatsByTime = await calculateCheatsByTime(
+                for: input.track,
+                duration: 20,
+                maxX: input.maxX,
+                maxY: input.maxX
+            )
+            
+            var bestCheats = 0
+            cheatsByTime.forEach {
+                if $0.key >= 100 {
+                    bestCheats += $0.value
+                }
             }
+            
+            print(bestCheats)
         }
-        
-        return "\(bestCheats)"
+
+        return "Wait for async print of the best cheats"
     }
     
     static func calculateCheatsByTime(for track: [Pos], duration: Int, maxX: Int, maxY: Int) async -> [Int: Int] {
