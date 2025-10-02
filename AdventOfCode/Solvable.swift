@@ -20,7 +20,7 @@ protocol Solvable {
 }
 
 extension Solvable {
-    static func solve() async -> TimeInterval {
+    static func solve() -> TimeInterval {
         let startTime = CFAbsoluteTimeGetCurrent()
         print("********** \(day.rawValue) Year \(year.rawValue) **********")
         
