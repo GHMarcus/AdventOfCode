@@ -12,86 +12,77 @@ enum Day_9_2016: Solvable {
     static var year: Input.Year = .Year_2016
     
     static func solvePart1(input: [String]) -> String {
-        var decompressedData: [String] = []
+        var decompressedLength = 0
         
         for line in input {
-            let oldString = Array(line)
-            var newString: [String.Element] = []
-            var isMarker = false
-            var marker: [String.Element] = []
-            
-            var counter = 0
-            while counter < oldString.count {
-                if oldString[counter] == "(" {
-                    isMarker = true
-                } else if oldString[counter] == ")" {
-                    isMarker = false
-                    let compression = String(marker).components(separatedBy: "x")
-                    
-                    for _ in 0..<Int(compression[1])! {
-                        for i in 0..<Int(compression[0])! {
-                            // Plus one for the closing bracket
-                            newString.append(oldString[counter+i+1])
-                        }
-                    }
-                    // Plus one for the closing bracket
-                    counter += (Int(compression[0])!)
-                    marker = []
-                } else if isMarker {
-                    marker.append(oldString[counter])
-                } else {
-                    newString.append(oldString[counter])
-                }
-                counter += 1
-            }
-            decompressedData.append(String(newString))
+            let length = decompressPart1(for: line)
+            decompressedLength += length
         }
         
-        var sum = 0
-        
-        decompressedData.forEach {
-            sum += $0.count
-        }
-        
-        return "\(sum)"
+        return "\(decompressedLength)"
     }
     
     static func solvePart2(input: [String]) -> String {
-        var sum = 0
+        var decompressedLength = 0
+        
         for line in input {
-            let string = Array(line)
-            
-            var counter = 0
-            while counter < string.count {
-                if string[counter] == "(" {
-                    sum += decompress(startIndex: counter, str: line)
-                    var jump = ""
-                    for i in 1..<string.count {
-                        if string[counter+i] == "x" {
-                            break
-                        } else {
-                            jump.append(string[counter+i])
-                        }
-                    }
-                    counter += Int(jump)!
-                }
-            }
+            let length = decompressPart2(for: line)
+            decompressedLength += length
         }
         
-        return "\(sum)"
+        return "\(decompressedLength)"
     }
     
-    static func decompress(startIndex: Int, str: String) -> Int {
-        let compression = str.suffix(str.count-startIndex)
-        let closingBracket = compression.firstIndex(of: ")")!
-        let compressionMarker = compression.prefix(upTo: closingBracket).dropFirst(1)//.prefix(closingBracket.utf16Offset(in: compression)).dropFirst()
-        print(compressionMarker)
-        let range = Int(compressionMarker.components(separatedBy: "x")[0])!
-        let factor = Int(compressionMarker.components(separatedBy: "x")[1])!
-        if !compression.suffix(str.count-startIndex-closingBracket.utf16Offset(in: compression)-1).prefix(range).contains("(") {
-            return factor
+    static func decompressPart1(for line: String) -> Int {
+        if line.contains("(") {
+            let firstOpenParenthesisIndex = line.firstIndex(of: "(")!
+            let firstClosingParenthesisIndex = line.firstIndex(of: ")")!
+            let firstPart = String(line[..<firstOpenParenthesisIndex])
+            let insideParenthesis = String(line[line.index(after: firstOpenParenthesisIndex)..<firstClosingParenthesisIndex])
+            let secondPart = String(line[line.index(after: firstClosingParenthesisIndex)...])
+            
+            let (count, length) = mapCompressionRate(insideParenthesis)
+            
+            
+            return firstPart.count + (length * count) + decompressPart1(for: String(secondPart.dropFirst(length)))
         } else {
-            return factor * decompress(startIndex: startIndex + compressionMarker.count + 2, str: str)
+            return line.replacingOccurrences(of: " ", with: "").count
         }
+    }
+    
+    // With the help of the comment here: https://github.com/rhardih/aoc/blob/master/2016/9p2.c
+    static func decompressPart2(for line: String) -> Int {
+        var weights = Array(repeating: 1, count: line.count)
+        var lengths = 0
+        
+        var currentMarker = ""
+        var markerDetected = false
+        for (index, c) in Array(line).enumerated() {
+            if c == "(" {
+                currentMarker = ""
+                markerDetected = true
+                continue
+            }
+            if c == ")" {
+                markerDetected = false
+                let (count, lengths) = mapCompressionRate(currentMarker)
+                for n in 1...lengths {
+                    weights[index+n] *= count
+                }
+                continue
+            }
+            if markerDetected {
+                currentMarker.append(c)
+                continue
+            }
+            lengths += weights[index]
+        }
+        
+        return lengths
+    }
+    
+    static func mapCompressionRate(_ string: String) -> (count: Int, length: Int) {
+        let cmp = string.components(separatedBy: "x")//.map { Int($0)! }
+        return (Int(cmp[1])!, Int(cmp[0])!)
     }
 }
