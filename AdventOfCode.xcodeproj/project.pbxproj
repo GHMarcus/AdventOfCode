@@ -2605,8 +2605,8 @@
 		B36947DD274EA215007A6AD6 /* Day_22 */ = {
 			isa = PBXGroup;
 			children = (
-				B36947DE274EA215007A6AD6 /* Day_22_2021.swift */,
 				B36947DF274EA215007A6AD6 /* Day_22_2021_Input */,
+				B36947DE274EA215007A6AD6 /* Day_22_2021.swift */,
 			);
 			path = Day_22;
 			sourceTree = "<group>";
@@ -2668,8 +2668,8 @@
 		B36947F2274EA215007A6AD6 /* Day_23 */ = {
 			isa = PBXGroup;
 			children = (
-				B36947F3274EA215007A6AD6 /* Day_23_2021.swift */,
 				B36947F4274EA215007A6AD6 /* Day_23_2021_Input */,
+				B36947F3274EA215007A6AD6 /* Day_23_2021.swift */,
 			);
 			path = Day_23;
 			sourceTree = "<group>";
