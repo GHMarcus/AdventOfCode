@@ -95,6 +95,7 @@
 		183C86652D12231800463BF3 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86642D12231800463BF3 /* Heap.swift */; };
 		183C86682D12F84D00463BF3 /* PathReconstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86672D12F84D00463BF3 /* PathReconstruction.swift */; };
 		183C866A2D12F8DA00463BF3 /* AStarAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C86692D12F8D600463BF3 /* AStarAll.swift */; };
+		188709782EB203530004DB56 /* ClosedRange+Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188709772EB203400004DB56 /* ClosedRange+Intersection.swift */; };
 		18F006282CEE335200F4F57E /* Day_7_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005EB2CEE335200F4F57E /* Day_7_2024.swift */; };
 		18F0062A2CEE335200F4F57E /* Day_5_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005E52CEE335200F4F57E /* Day_5_2024.swift */; };
 		18F0062D2CEE335200F4F57E /* Day_2_2024.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F005DC2CEE335200F4F57E /* Day_2_2024.swift */; };
@@ -444,6 +445,7 @@
 		183C86642D12231800463BF3 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		183C86672D12F84D00463BF3 /* PathReconstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathReconstruction.swift; sourceTree = "<group>"; };
 		183C86692D12F8D600463BF3 /* AStarAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarAll.swift; sourceTree = "<group>"; };
+		188709772EB203400004DB56 /* ClosedRange+Intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClosedRange+Intersection.swift"; sourceTree = "<group>"; };
 		18F005D92CEE335200F4F57E /* Day_1_2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_1_2024.swift; sourceTree = "<group>"; };
 		18F005DA2CEE335200F4F57E /* Day_1_2024_Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Day_1_2024_Input; sourceTree = "<group>"; };
 		18F005DC2CEE335200F4F57E /* Day_2_2024.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day_2_2024.swift; sourceTree = "<group>"; };
@@ -2138,22 +2140,23 @@
 		B369473927478718007A6AD6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				183C865D2D0C578C00463BF3 /* FloatingPoint+IsInt.swift */,
-				183C865B2D0C577D00463BF3 /* Double+Round.swift */,
 				16DC2EC0276E1478005F5C56 /* Array+AllIndices.swift */,
 				B3694811274F9F0A007A6AD6 /* Array+Chunks.swift */,
+				183C85D52CFB54A700463BF3 /* Array+Combinations.swift */,
 				B3F29BC12891105900CC681F /* Array+CountedElements.swift */,
 				B369473727478711007A6AD6 /* Array+Permutations.swift */,
 				16C0BE9C2760F94B00E3B087 /* Array+Print.swift */,
 				B37445DC2B26FC28005638E3 /* Array+Rotate.swift */,
+				188709772EB203400004DB56 /* ClosedRange+Intersection.swift */,
 				16275114293DCA2200FF0986 /* ClosedRange+IsSubRange.swift */,
 				16275112293DC58200FF0986 /* Collection+Get.swift */,
 				16C0BE9A275B87F700E3B087 /* Collection+Transposed.swift */,
+				183C865B2D0C577D00463BF3 /* Double+Round.swift */,
+				183C865D2D0C578C00463BF3 /* FloatingPoint+IsInt.swift */,
 				B3D06AD42B1DA9E1002D4B0A /* Int+Pow.swift */,
 				B369473A274982D4007A6AD6 /* PerfectSumProblem.swift */,
-				B36947352746C459007A6AD6 /* StringExtensions.swift */,
-				183C85D52CFB54A700463BF3 /* Array+Combinations.swift */,
 				183C85D72CFEF31100463BF3 /* String+Regex.swift */,
+				B36947352746C459007A6AD6 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2284,8 +2287,8 @@
 		B3694761274EA1A8007A6AD6 /* Day_20 */ = {
 			isa = PBXGroup;
 			children = (
-				B3694762274EA1A8007A6AD6 /* Day_20_2016.swift */,
 				B3694763274EA1A8007A6AD6 /* Day_20_2016_Input */,
+				B3694762274EA1A8007A6AD6 /* Day_20_2016.swift */,
 			);
 			path = Day_20;
 			sourceTree = "<group>";
@@ -3494,6 +3497,7 @@
 				168B97BC257A76FC0047E969 /* Day_15_2020.swift in Sources */,
 				B3342BF4292E4D5A0037F123 /* Day_2_2022.swift in Sources */,
 				168B97C2257A76FC0047E969 /* Day_8_2020.swift in Sources */,
+				188709782EB203530004DB56 /* ClosedRange+Intersection.swift in Sources */,
 				183C865C2D0C578400463BF3 /* Double+Round.swift in Sources */,
 				B3694794274EA1A8007A6AD6 /* Day_17_2016.swift in Sources */,
 				168B97C4257A76FC0047E969 /* Day_19_2020.swift in Sources */,
