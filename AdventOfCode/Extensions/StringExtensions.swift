@@ -87,3 +87,22 @@ extension Character {
 extension String {
     var wordValue: Int { compactMap(\.letterValue).reduce(0, +) }
 }
+
+extension Character {
+    var isAscii: Bool {
+        return unicodeScalars.allSatisfy { $0.isASCII }
+    }
+    var ascii: Int? {
+        if isASCII, let value = unicodeScalars.first?.value {
+            return Int(value)
+        } else {
+            return nil
+        }
+    }
+}
+
+extension StringProtocol {
+    var asciiValues: [Int] {
+        return compactMap { $0.ascii }
+    }
+}
