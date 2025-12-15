@@ -3,8 +3,8 @@
 //import Foundation
 //
 //let currentDirectory = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-//let year = "2024"
-//for day in 1...25 {
+//let year = "2025"
+//for day in 1...12 {
 //    let templateString =
 //"""
 ////
@@ -102,14 +102,14 @@
 //
 //var yearFileString = yearHeader
 //
-//for day in 1...25 {
+//for day in 1...12 {
 //    let yearPropertyTemplate = "    let day_\(day): Day_\(day)_\(year).Type\n"
 //    yearFileString += yearPropertyTemplate
 //}
 //
 //yearFileString += yearMiddle
 //
-//for day in 1...25 {
+//for day in 1...12 {
 //    let yearInitTemplate = "        day_\(day) = Day_\(day)_\(year).self\n"
 //    yearFileString += yearInitTemplate
 //}

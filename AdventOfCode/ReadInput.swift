@@ -19,6 +19,7 @@ enum Input {
         case Year_2022 = "2022"
         case Year_2023 = "2023"
         case Year_2024 = "2024"
+        case Year_2025 = "2025"
     }
 
     enum Day: String {
