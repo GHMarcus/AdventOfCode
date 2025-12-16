@@ -7,7 +7,7 @@
 
 import Foundation
         
-let diffTime = Year_2025().day_4.solve()
+let diffTime = Year_2025().day_5.solve()
 print("Took \(diffTime) seconds")
 
 //// RunLoop am Leben halten, bis Task fertig ist
